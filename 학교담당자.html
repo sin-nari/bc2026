@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 부천형 공동교육과정 계절학기(여름방학) - 학교 담당자</title>
+<style>
+:root{--blue:#2458a6;--blue-light:#eaf1fb;--blue-dark:#10233f;--teal:#0f766e;--teal-light:#ecfdf5;--line:#e2e8f0;--text:#1e293b;--muted:#64748b;--bg:#f4f6f9;--paper:#fff;--success:#16a34a;--warn:#d97706;--danger:#dc2626;--radius:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Pretendard","Noto Sans KR","Malgun Gothic",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:15px}
+#app{display:flex;height:100vh;overflow:hidden}
+#sidebar{width:240px;background:var(--blue-dark);color:#fff;display:flex;flex-direction:column;flex-shrink:0}
+#main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#topbar{height:56px;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 20px;flex-shrink:0}
+#content{flex:1;overflow-y:auto;padding:24px}
+#sidebar-header{padding:18px 16px 12px;border-bottom:1px solid rgba(255,255,255,.1)}
+#sidebar-header h1{font-size:13px;font-weight:700;line-height:1.5;color:#e2e8f0}
+#sidebar-header .badge{font-size:11px;color:#94a3b8;margin-top:4px}
+#nav{flex:1;overflow-y:auto;padding:8px 10px}
+.nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#cbd5e1;transition:all .15s;margin:1px 0;border:none;background:none;width:100%;text-align:left}
+.nav-item:hover{background:rgba(255,255,255,.1);color:#fff}
+.nav-item.active{background:rgba(255,255,255,.18);color:#fff;font-weight:700}
+.nav-section{font-size:11px;color:#64748b;padding:10px 10px 4px;text-transform:uppercase;letter-spacing:.06em}
+.tb-btn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:13px;font-weight:600;color:var(--text);transition:all .15s;white-space:nowrap}
+.tb-btn:hover{background:#f8fafc}
+.tb-btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tb-btn.primary:hover{background:#1d4ed8}
+.tb-btn:disabled{opacity:0.4;cursor:not-allowed}
+.tb-title{font-weight:700;font-size:14px;color:var(--blue-dark)}
+.section{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 32px;margin-bottom:20px;scroll-margin-top:20px}
+.section h2{font-size:22px;font-weight:800;color:var(--blue);border-bottom:3px solid var(--blue);padding-bottom:8px;margin-bottom:20px}
+.section h3{font-size:17px;font-weight:700;margin:22px 0 10px;color:#111827}
+/* 학교 선택 배너 */
+#school-banner{background:var(--blue-dark);color:#fff;padding:16px 24px;display:flex;align-items:center;gap:14px;flex-shrink:0;flex-wrap:wrap}
+#school-banner .label{font-size:13px;font-weight:700;color:#94a3b8;white-space:nowrap}
+#school-select{padding:8px 14px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);cursor:pointer;min-width:180px}
+#school-select option{color:#1e293b;background:#fff}
+#selected-school-name{font-size:15px;font-weight:800;color:#60a5fa}
+/* 체크리스트 */
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border-radius:8px;margin:3px 0;cursor:pointer;transition:background .12s;border:1px solid transparent}
+.check-item:hover{background:#f8fafc;border-color:var(--line)}
+.check-item.done{background:#f0fdf4}
+.check-item.done .check-label{text-decoration:line-through;color:var(--muted)}
+.check-box{width:18px;height:18px;border-radius:5px;border:2px solid #cbd5e1;background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:all .15s}
+.check-box.checked{background:var(--success);border-color:var(--success)}
+.check-box.checked::after{content:'✓';color:#fff;font-size:11px;font-weight:800}
+.progress-bar-wrap{background:#e2e8f0;border-radius:999px;height:8px;margin:6px 0;overflow:hidden}
+.progress-bar{height:100%;background:var(--success);border-radius:999px;transition:width .4s}
+.progress-label{font-size:12px;color:var(--muted);margin-bottom:4px}
+details{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:#fff;overflow:hidden}
+summary{font-weight:700;cursor:pointer;padding:12px 16px;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:14px}
+summary::after{content:'＋';font-size:18px;color:var(--muted)}
+details[open] summary::after{content:'－'}
+.detail-body{padding:12px 16px 14px;border-top:1px solid var(--line)}
+/* 물품 신청 */
+.goods-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.goods-table th{background:#f1f5f9;border:1px solid var(--line);padding:9px 10px;text-align:center;font-weight:700;font-size:12px}
+.goods-table td{border:1px solid var(--line);padding:6px 8px;vertical-align:middle}
+.goods-table input{width:100%;border:none;outline:none;font-size:13px;background:transparent;padding:2px 4px;font-family:inherit}
+.goods-table input:focus{background:#f0f9ff}
+.goods-table .total-cell{background:#f8fafc;font-weight:700;text-align:right}
+.add-row-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;border:1px dashed var(--line);background:none;cursor:pointer;font-size:13px;color:var(--muted);margin-top:8px;transition:all .15s}
+.add-row-btn:hover{background:#f8fafc;border-color:#93c5fd;color:var(--blue)}
+/* 저장 영역 */
+#save-area{position:sticky;bottom:0;background:var(--paper);border-top:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;z-index:5}
+#save-result{font-size:13px;color:var(--muted)}
+/* 진행률 카드 */
+.progress-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:16px 0}
+.progress-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px}
+.progress-card .pc-label{font-size:11px;color:var(--muted);margin-bottom:4px}
+.progress-card .pc-pct{font-size:22px;font-weight:800}
+/* toast */
+#toast{position:fixed;bottom:80px;right:24px;background:#334155;color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;font-weight:600;z-index:200;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none}
+#toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:768px){#sidebar{display:none}#content{padding:14px}#save-area{padding:12px 16px}}
+@media print{#sidebar,#topbar,#school-banner,#save-area{display:none!important}#content{padding:0}.section{border:none;box-shadow:none;page-break-after:always}}
+</style>
+</head>
+<body>
+<div id="app">
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <h1>2026 부천형<br>공동교육과정<br>계절학기</h1>
+    <div class="badge">학교 담당자용</div>
+  </div>
+  <nav id="nav">
+    <div class="nav-section">메뉴</div>
+    <button class="nav-item active" onclick="goTo('checklist-section')">✅ 체크리스트</button>
+    <button class="nav-item" onclick="goTo('goods-section')">🛒 물품 구입 신청</button>
+    <button class="nav-item" onclick="goTo('progress-section')">📊 진행률 요약</button>
+  </nav>
+</aside>
+<div id="main">
+  <div id="topbar">
+    <span class="tb-title">학교 담당자 페이지</span>
+    <span style="font-size:12px;color:var(--muted);margin-left:auto" id="topbar-school">학교를 선택해 주세요</span>
+    <button class="tb-btn" onclick="window.print()">🖨️ 인쇄</button>
+  </div>
+
+  <!-- 학교 선택 배너 -->
+  <div id="school-banner">
+    <span class="label">🏫 학교 선택</span>
+    <select id="school-select" onchange="onSchoolChange(this.value)">
+      <option value="">학교 / 과목을 선택하세요</option>
+      <optgroup label="부천여자고등학교">
+        <option value="부천여자고등학교_교육의이해A">부천여자고등학교 · 교육의 이해A</option>
+        <option value="부천여자고등학교_보건">부천여자고등학교 · 보건</option>
+      </optgroup>
+      <optgroup label="정명고등학교">
+        <option value="정명고등학교_교육의이해B">정명고등학교 · 교육의 이해B</option>
+      </optgroup>
+    </select>
+    <span id="selected-school-name"></span>
+    <span style="font-size:12px;color:#94a3b8;margin-left:auto" id="last-saved-time"></span>
+  </div>
+
+  <div id="content">
+
+    <!-- 체크리스트 -->
+    <section id="checklist-section" class="section">
+      <h2>✅ 체크리스트</h2>
+
+      <!-- 운영교 -->
+      <h3>운영교 업무</h3>
+      <details open>
+        <summary>운영 전</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch3-pre">0 / 5 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch3-pre" style="width:0%"></div></div>
+          <div data-group="ch3-pre">
+            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">운영계획 제출</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">수업교사 확보</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">협력교사 확보</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">물품 신청</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">수강생 확정</div></div>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary>운영 중</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch3-mid">0 / 4 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch3-mid" style="width:0%"></div></div>
+          <div data-group="ch3-mid">
+            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">출결 관리</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">수업 모니터링</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">평가 운영</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">안전 관리</div></div>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary>운영 후</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch3-post">0 / 4 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch3-post" style="width:0%"></div></div>
+          <div data-group="ch3-post">
+            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">성적 처리</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">학생부 입력</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">정산</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">결과보고</div></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 참여학교 -->
+      <h3>참여학교 업무</h3>
+      <details>
+        <summary>운영 전</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch4-pre">0 / 5 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch4-pre" style="width:0%"></div></div>
+          <div data-group="ch4-pre">
+            <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">공동교육과정 안내</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">수강 신청 안내</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">신청서 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">학부모 동의서 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">수강생 명단 확인</div></div>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary>운영 중·후</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch4-post">0 / 7 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch4-post" style="width:0%"></div></div>
+          <div data-group="ch4-post">
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">학생 참여 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">출결 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">학생 상담</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">운영교 협조</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">학점 이수 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">학생부 반영 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch4-post')"><div class="check-box"></div><div class="check-label">만족도 조사 참여</div></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 수업교사 -->
+      <h3>수업교사 업무</h3>
+      <details>
+        <summary>운영 전</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch5-pre">0 / 5 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch5-pre" style="width:0%"></div></div>
+          <div data-group="ch5-pre">
+            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">강사카드 제출</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">수업운영계획서 제출</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">평가계획 작성</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">물품 신청</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">수강생 안내</div></div>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary>운영 중·후</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-ch5-mid">0 / 8 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch5-mid" style="width:0%"></div></div>
+          <div data-group="ch5-mid">
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">출결 관리</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">수업 운영</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">과제 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">학생 상담</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">안전 관리</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">평가 실시</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">성적 처리</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">세특 작성 및 결과보고 제출</div></div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 안전 -->
+      <h3>안전관리</h3>
+      <details>
+        <summary>오프라인 안전</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-safety-off">0 / 4 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-safety-off" style="width:0%"></div></div>
+          <div data-group="safety-off">
+            <div class="check-item" onclick="toggleCheck(this,'safety-off')"><div class="check-box"></div><div class="check-label">이동 경로 사전 안내</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'safety-off')"><div class="check-box"></div><div class="check-label">교통안전 교육</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'safety-off')"><div class="check-box"></div><div class="check-label">실험·실습 안전교육</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'safety-off')"><div class="check-box"></div><div class="check-label">응급상황 대응 절차 안내</div></div>
+          </div>
+        </div>
+      </details>
+      <details>
+        <summary>온라인 안전</summary>
+        <div class="detail-body">
+          <div class="progress-label" id="prog-safety-on">0 / 4 완료</div>
+          <div class="progress-bar-wrap"><div class="progress-bar" id="bar-safety-on" style="width:0%"></div></div>
+          <div data-group="safety-on">
+            <div class="check-item" onclick="toggleCheck(this,'safety-on')"><div class="check-box"></div><div class="check-label">개인정보 보호 안내</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'safety-on')"><div class="check-box"></div><div class="check-label">수업 영상 활용 동의 확인</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'safety-on')"><div class="check-box"></div><div class="check-label">온라인 예절 및 저작권 교육</div></div>
+            <div class="check-item" onclick="toggleCheck(this,'safety-on')"><div class="check-box"></div><div class="check-label">접속 장애 시 대체 연락 체계 마련</div></div>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <!-- 물품 구입 신청 -->
+    <section id="goods-section" class="section">
+      <h2>🛒 물품 구입 신청</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:14px">수업에 필요한 물품을 입력하세요. 저장 버튼을 누르면 구글 시트에 자동 반영됩니다.</p>
+      <div style="overflow-x:auto">
+        <table class="goods-table">
+          <thead>
+            <tr>
+              <th style="width:36px">No.</th>
+              <th style="width:160px">품명</th>
+              <th style="width:110px">규격</th>
+              <th style="width:60px">수량</th>
+              <th style="width:90px">단가(원)</th>
+              <th style="width:90px">금액(원)</th>
+              <th>사용 목적</th>
+              <th style="width:36px"></th>
+            </tr>
+          </thead>
+          <tbody id="goods-body"></tbody>
+        </table>
+      </div>
+      <button class="add-row-btn" onclick="addGoodsRow()">＋ 행 추가</button>
+      <div style="margin-top:14px;padding:12px 16px;background:#f8fafc;border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;font-weight:700">합계</span>
+        <span style="font-size:18px;font-weight:800;color:var(--blue)" id="goods-total">0 원</span>
+      </div>
+    </section>
+
+    <!-- 진행률 요약 -->
+    <section id="progress-section" class="section">
+      <h2>📊 진행률 요약</h2>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <span style="font-weight:700;font-size:16px">전체 진행률</span>
+        <span id="total-pct" style="font-size:26px;font-weight:800;color:var(--blue)">0%</span>
+      </div>
+      <div class="progress-bar-wrap" style="height:12px;margin-bottom:6px">
+        <div class="progress-bar" id="total-bar" style="width:0%"></div>
+      </div>
+      <div id="total-count" style="font-size:13px;color:var(--muted);margin-bottom:20px">0 / 0 항목 완료</div>
+      <div class="progress-cards" id="group-cards"></div>
+    </section>
+
+  </div><!-- /content -->
+
+  <!-- 하단 저장 영역 -->
+  <div id="save-area">
+    <button class="tb-btn primary" id="save-all-btn" onclick="saveAll()" disabled>📊 구글 시트에 저장</button>
+    <span id="save-result"></span>
+  </div>
+
+</div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQBfHSZY5NJY3povb6EvBRpH09uoWRT8Do5B6T56rn6qZ56oqdeyHbrQID--PuBdQH/exec';
+
+const GROUP_NAMES = {
+  'ch3-pre':'운영교/운영전','ch3-mid':'운영교/운영중','ch3-post':'운영교/운영후',
+  'ch4-pre':'참여교/운영전','ch4-post':'참여교/운영중후',
+  'ch5-pre':'수업교사/운영전','ch5-mid':'수업교사/운영중후',
+  'safety-off':'안전/오프라인','safety-on':'안전/온라인'
+};
+
+let currentSchool = '';
+let goodsRowCount = 0;
+
+// ── 학교 선택 ──
+const SCHOOL_LABELS = {
+  '부천여자고등학교_교육의이해A': '부천여자고 · 교육의 이해A',
+  '부천여자고등학교_보건':        '부천여자고 · 보건',
+  '정명고등학교_교육의이해B':     '정명고 · 교육의 이해B'
+};
+
+function onSchoolChange(val) {
+  currentSchool = val;
+  const label = SCHOOL_LABELS[val] || val;
+  document.getElementById('selected-school-name').textContent = val ? '✔ ' + label : '';
+  document.getElementById('topbar-school').textContent = label || '학교를 선택해 주세요';
+  const btn = document.getElementById('save-all-btn');
+  btn.disabled = !val;
+  if (val) {
+    restoreLocal(val);
+  }
+}
+
+// ── 체크리스트 ──
+function toggleCheck(el, group) {
+  const box = el.querySelector('.check-box');
+  const done = box.classList.toggle('checked');
+  el.classList.toggle('done', done);
+  updateGroup(group);
+  updateTotal();
+}
+
+function updateGroup(group) {
+  const wrap = document.querySelector(`[data-group="${group}"]`);
+  if (!wrap) return;
+  const items = wrap.querySelectorAll('.check-item');
+  const done  = wrap.querySelectorAll('.check-box.checked').length;
+  const total = items.length;
+  const pct   = total ? Math.round(done/total*100) : 0;
+  const bar   = document.getElementById('bar-' + group);
+  const lbl   = document.getElementById('prog-' + group);
+  if (bar) bar.style.width = pct + '%';
+  if (lbl) lbl.textContent = done + ' / ' + total + ' 완료';
+  renderGroupCards();
+}
+
+function updateTotal() {
+  const all  = document.querySelectorAll('.check-item');
+  const done = document.querySelectorAll('.check-box.checked');
+  const total = all.length, d = done.length;
+  const pct = total ? Math.round(d/total*100) : 0;
+  document.getElementById('total-bar').style.width = pct + '%';
+  document.getElementById('total-pct').textContent = pct + '%';
+  document.getElementById('total-count').textContent = d + ' / ' + total + ' 항목 완료';
+}
+
+function renderGroupCards() {
+  const cards = document.getElementById('group-cards');
+  let html = '';
+  Object.keys(GROUP_NAMES).forEach(gid => {
+    const wrap = document.querySelector(`[data-group="${gid}"]`);
+    if (!wrap) return;
+    const done  = wrap.querySelectorAll('.check-box.checked').length;
+    const total = wrap.querySelectorAll('.check-item').length;
+    const pct   = total ? Math.round(done/total*100) : 0;
+    const color = pct===100 ? 'var(--success)' : pct>0 ? 'var(--warn)' : 'var(--muted)';
+    html += `<div class="progress-card">
+      <div class="pc-label">${GROUP_NAMES[gid]}</div>
+      <div class="pc-pct" style="color:${color}">${pct}%</div>
+      <div style="font-size:12px;color:var(--muted)">${done}/${total} 완료</div>
+      <div class="progress-bar-wrap" style="height:4px;margin-top:6px">
+        <div style="height:100%;background:${color};width:${pct}%;border-radius:999px;transition:width .3s"></div>
+      </div>
+    </div>`;
+  });
+  cards.innerHTML = html;
+}
+
+// ── 물품 신청 ──
+function addGoodsRow() {
+  goodsRowCount++;
+  const tbody = document.getElementById('goods-body');
+  const tr = document.createElement('tr');
+  tr.id = 'goods-row-' + goodsRowCount;
+  tr.innerHTML = `
+    <td style="text-align:center;color:var(--muted);font-size:13px">${goodsRowCount}</td>
+    <td><input type="text" placeholder="품명" class="g-name" oninput="calcTotal()"></td>
+    <td><input type="text" placeholder="규격" class="g-spec"></td>
+    <td><input type="number" placeholder="0" class="g-qty" min="0" oninput="calcRow(this);calcTotal()" style="text-align:right"></td>
+    <td><input type="number" placeholder="0" class="g-price" min="0" oninput="calcRow(this);calcTotal()" style="text-align:right"></td>
+    <td class="total-cell g-amount">0</td>
+    <td><input type="text" placeholder="사용 목적" class="g-purpose"></td>
+    <td style="text-align:center"><button onclick="removeRow('goods-row-${goodsRowCount}')" style="border:none;background:none;cursor:pointer;color:#dc2626;font-size:16px">✕</button></td>`;
+  tbody.appendChild(tr);
+}
+
+function calcRow(input) {
+  const tr  = input.closest('tr');
+  const qty = parseInt(tr.querySelector('.g-qty').value) || 0;
+  const pri = parseInt(tr.querySelector('.g-price').value) || 0;
+  tr.querySelector('.g-amount').textContent = (qty * pri).toLocaleString();
+}
+
+function calcTotal() {
+  const amounts = document.querySelectorAll('.g-amount');
+  let total = 0;
+  amounts.forEach(a => { total += parseInt(a.textContent.replace(/,/g,'')) || 0; });
+  document.getElementById('goods-total').textContent = total.toLocaleString() + ' 원';
+}
+
+function removeRow(id) {
+  const el = document.getElementById(id);
+  if (el) { el.remove(); calcTotal(); }
+}
+
+function getGoodsData() {
+  const rows = document.querySelectorAll('#goods-body tr');
+  const goods = [];
+  rows.forEach(tr => {
+    const name    = tr.querySelector('.g-name')?.value.trim() || '';
+    const spec    = tr.querySelector('.g-spec')?.value.trim() || '';
+    const qty     = tr.querySelector('.g-qty')?.value || '0';
+    const price   = tr.querySelector('.g-price')?.value || '0';
+    const purpose = tr.querySelector('.g-purpose')?.value.trim() || '';
+    if (name) goods.push({ name, spec, qty, price, purpose });
+  });
+  return goods;
+}
+
+// ── 전체 저장 ──
+function saveAll() {
+  if (!currentSchool) { showToast('학교를 먼저 선택하세요.'); return; }
+  const btn = document.getElementById('save-all-btn');
+  btn.textContent = '⏳ 저장 중...';
+  btn.disabled = true;
+
+  // 체크리스트 수집
+  const items = [];
+  document.querySelectorAll('[data-group]').forEach(wrap => {
+    const gid = wrap.dataset.group;
+    wrap.querySelectorAll('.check-item').forEach(item => {
+      items.push({
+        group: GROUP_NAMES[gid] || gid,
+        label: item.querySelector('.check-label').textContent.trim(),
+        done:  item.querySelector('.check-box').classList.contains('checked')
+      });
+    });
+  });
+  const done  = items.filter(i => i.done).length;
+  const total = items.length;
+  const goods = getGoodsData();
+
+  // localStorage 백업
+  localStorage.setItem('chk_' + currentSchool, JSON.stringify(items));
+  localStorage.setItem('goods_' + currentSchool, JSON.stringify(goods));
+  localStorage.setItem('time_' + currentSchool, new Date().toLocaleString('ko-KR'));
+
+  // 체크리스트 저장 → 완료 후 물품 저장
+  jsonpCall('saveCheck', {
+    school: currentSchool,
+    items: encodeURIComponent(JSON.stringify(items)),
+    done, total
+  }, (res1) => {
+    if (goods.length === 0) {
+      finishSave(res1, null);
+    } else {
+      jsonpCall('saveGoods', {
+        school: currentSchool,
+        goods: encodeURIComponent(JSON.stringify(goods))
+      }, (res2) => finishSave(res1, res2));
+    }
+  });
+}
+
+function finishSave(res1, res2) {
+  const btn = document.getElementById('save-all-btn');
+  btn.textContent = '📊 구글 시트에 저장';
+  btn.disabled = false;
+  const time = new Date().toLocaleTimeString('ko-KR');
+  if (res1.status === 'success') {
+    const goodsMsg = res2 ? ` / 물품 ${res2.saved || 0}건` : '';
+    showToast('✅ 저장 완료! 체크리스트 ' + res1.pct + goodsMsg);
+    document.getElementById('save-result').textContent = time + ' 저장 완료';
+    document.getElementById('last-saved-time').textContent = '마지막 저장: ' + time;
+  } else {
+    showToast('⚠️ 저장 오류: ' + (res1.message || ''));
+  }
+}
+
+// ── JSONP 요청 ──
+function jsonpCall(action, params, callback) {
+  const cbName = 'cb_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+  const qs = Object.entries(params).map(([k,v]) => k+'='+v).join('&');
+  const url = APPS_SCRIPT_URL + '?action=' + action + '&callback=' + cbName + '&' + qs;
+
+  const timer = setTimeout(() => {
+    cleanup();
+    callback({ status:'error', message:'응답 시간 초과' });
+  }, 12000);
+
+  function cleanup() {
+    clearTimeout(timer);
+    delete window[cbName];
+    const s = document.getElementById('jsonp-' + cbName);
+    if (s) s.remove();
+  }
+
+  window[cbName] = function(res) { cleanup(); callback(res); };
+
+  const script = document.createElement('script');
+  script.id  = 'jsonp-' + cbName;
+  script.src = url;
+  script.onerror = () => { cleanup(); callback({ status:'error', message:'네트워크 오류' }); };
+  document.head.appendChild(script);
+}
+
+// ── localStorage 복원 ──
+function restoreLocal(school) {
+  // 체크리스트 복원
+  const savedChk = localStorage.getItem('chk_' + school);
+  document.querySelectorAll('.check-item').forEach(el => {
+    el.querySelector('.check-box').classList.remove('checked');
+    el.classList.remove('done');
+  });
+  if (savedChk) {
+    try {
+      const items = JSON.parse(savedChk);
+      const labelMap = {};
+      document.querySelectorAll('.check-item').forEach(el => {
+        labelMap[el.querySelector('.check-label').textContent.trim()] = el;
+      });
+      items.forEach(item => {
+        if (item.done && labelMap[item.label]) {
+          labelMap[item.label].querySelector('.check-box').classList.add('checked');
+          labelMap[item.label].classList.add('done');
+        }
+      });
+    } catch(e) {}
+  }
+  Object.keys(GROUP_NAMES).forEach(g => updateGroup(g));
+  updateTotal();
+
+  // 물품 복원
+  document.getElementById('goods-body').innerHTML = '';
+  goodsRowCount = 0;
+  const savedGoods = localStorage.getItem('goods_' + school);
+  if (savedGoods) {
+    try {
+      JSON.parse(savedGoods).forEach(g => {
+        addGoodsRow();
+        const tbody = document.getElementById('goods-body');
+        const lastTr = tbody.lastElementChild;
+        lastTr.querySelector('.g-name').value    = g.name || '';
+        lastTr.querySelector('.g-spec').value    = g.spec || '';
+        lastTr.querySelector('.g-qty').value     = g.qty || '';
+        lastTr.querySelector('.g-price').value   = g.price || '';
+        lastTr.querySelector('.g-purpose').value = g.purpose || '';
+        calcRow(lastTr.querySelector('.g-qty'));
+      });
+      calcTotal();
+    } catch(e) {}
+  }
+
+  const t = localStorage.getItem('time_' + school);
+  if (t) document.getElementById('last-saved-time').textContent = '마지막 저장: ' + t;
+}
+
+// ── 네비게이션 ──
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const btn = event.target.closest('.nav-item');
+  if (btn) btn.classList.add('active');
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// 초기 행 3개
+window.addEventListener('load', () => {
+  addGoodsRow(); addGoodsRow(); addGoodsRow();
+  renderGroupCards();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 부천형 공동교육과정 계절학기(여름방학) - 관리자</title>
+<style>
+:root{--blue:#2458a6;--blue-dark:#10233f;--line:#e2e8f0;--text:#1e293b;--muted:#64748b;--bg:#f4f6f9;--paper:#fff;--success:#16a34a;--warn:#d97706;--danger:#dc2626}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Pretendard","Noto Sans KR","Malgun Gothic",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:15px}
+/* 로그인 화면 */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--blue-dark)}
+.login-card{background:#fff;border-radius:16px;padding:40px 36px;max-width:360px;width:90%;text-align:center}
+.login-card .logo{font-size:13px;color:var(--muted);margin-bottom:6px}
+.login-card h1{font-size:22px;font-weight:800;color:var(--blue-dark);margin-bottom:6px}
+.login-card p{font-size:13px;color:var(--muted);margin-bottom:28px}
+.login-card input{width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:10px;font-size:16px;text-align:center;letter-spacing:.2em;outline:none;margin-bottom:12px;font-family:inherit}
+.login-card input:focus{border-color:var(--blue)}
+.login-card button{width:100%;padding:12px;border:none;border-radius:10px;background:var(--blue);color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.login-card button:hover{background:#1d4ed8}
+#login-error{color:var(--danger);font-size:13px;margin-top:8px;display:none}
+/* 대시보드 */
+#dashboard{display:none;min-height:100vh;flex-direction:column}
+#dash-header{background:var(--blue-dark);color:#fff;padding:0 28px;height:60px;display:flex;align-items:center;gap:16px}
+#dash-header h1{font-size:16px;font-weight:700}
+#dash-header .spacer{flex:1}
+.hbtn{padding:7px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;font-size:13px;font-weight:600}
+.hbtn:hover{background:rgba(255,255,255,.15)}
+/* 탭 */
+#dash-tabs{background:var(--paper);border-bottom:1px solid var(--line);display:flex;gap:0;padding:0 28px}
+.tab-btn{padding:14px 20px;border:none;background:none;cursor:pointer;font-size:14px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;transition:all .15s}
+.tab-btn.active{color:var(--blue);border-bottom-color:var(--blue)}
+.tab-btn:hover{color:var(--text)}
+/* 콘텐츠 */
+#dash-content{flex:1;padding:28px;overflow-y:auto}
+.section{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px 28px;margin-bottom:20px}
+.section h2{font-size:18px;font-weight:800;color:var(--blue-dark);margin-bottom:16px}
+/* 요약 카드 */
+.summary-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.sum-card{border-radius:10px;padding:18px;text-align:center}
+.sum-card .sc-label{font-size:11px;font-weight:700;margin-bottom:6px;letter-spacing:.04em}
+.sum-card .sc-num{font-size:32px;font-weight:800}
+/* 학교 카드 */
+.school-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.school-card{border-radius:10px;padding:16px;border:1px solid transparent}
+.school-card .sc-name{font-weight:700;font-size:14px;margin-bottom:8px}
+.school-card .sc-pct{font-size:24px;font-weight:800}
+.school-card .sc-bar-wrap{background:#e2e8f0;border-radius:999px;height:6px;margin:8px 0;overflow:hidden}
+.school-card .sc-bar{height:100%;border-radius:999px;transition:width .4s}
+.school-card .sc-meta{font-size:11px;color:var(--muted)}
+/* 물품 테이블 */
+.goods-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:9px 11px;vertical-align:top}
+th{background:#f1f5f9;font-weight:700;text-align:center;font-size:12px}
+td.right{text-align:right}
+/* 미제출 */
+.absent-list{display:flex;flex-wrap:wrap;gap:8px}
+.absent-badge{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;border-radius:8px;padding:6px 14px;font-size:13px;font-weight:600}
+/* loading */
+#loading{text-align:center;padding:60px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- 로그인 화면 -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo">경기도부천교육지원청</div>
+    <h1>관리자 페이지</h1>
+    <p>2026 부천형 공동교육과정 계절학기(여름방학)<br>전체 학교 현황 조회</p>
+    <input type="password" id="pw-input" placeholder="비밀번호" maxlength="20"
+      onkeydown="if(event.key==='Enter')tryLogin()">
+    <button onclick="tryLogin()">로그인</button>
+    <div id="login-error">비밀번호가 올바르지 않습니다.</div>
+  </div>
+</div>
+
+<!-- 대시보드 -->
+<div id="dashboard">
+  <div id="dash-header">
+    <h1>🏫 2026 부천형 공동교육과정 계절학기(여름방학) 관리자</h1>
+    <div class="spacer"></div>
+    <button class="hbtn" onclick="loadData()">🔄 새로고침</button>
+    <button class="hbtn" onclick="location.reload()">🔐 로그아웃</button>
+  </div>
+  <div id="dash-tabs">
+    <button class="tab-btn active" onclick="showTab('tab-check')">✅ 체크리스트 현황</button>
+    <button class="tab-btn" onclick="showTab('tab-goods')">🛒 물품 신청 현황</button>
+    <button class="tab-btn" onclick="showTab('tab-absent')">⚠️ 미제출 현황</button>
+  </div>
+  <div id="dash-content">
+    <div id="loading">⏳ 데이터를 불러오는 중...</div>
+    <div id="tab-check" style="display:none"></div>
+    <div id="tab-goods" style="display:none"></div>
+    <div id="tab-absent" style="display:none"></div>
+  </div>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwQBfHSZY5NJY3povb6EvBRpH09uoWRT8Do5B6T56rn6qZ56oqdeyHbrQID--PuBdQH/exec';
+const ADMIN_PW = 'bc0713';
+const ALL_SCHOOLS = [
+  '부천여자고등학교_교육의이해A',
+  '부천여자고등학교_보건',
+  '정명고등학교_교육의이해B'
+];
+const SCHOOL_LABELS = {
+  '부천여자고등학교_교육의이해A': '부천여자고 · 교육의 이해A',
+  '부천여자고등학교_보건':        '부천여자고 · 보건',
+  '정명고등학교_교육의이해B':     '정명고 · 교육의 이해B'
+};
+
+let currentTab = 'tab-check';
+
+// ── 로그인 ──
+function tryLogin() {
+  const pw = document.getElementById('pw-input').value;
+  if (pw === ADMIN_PW) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'flex';
+    loadData();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-input').focus();
+  }
+}
+
+// ── 탭 전환 ──
+function showTab(id) {
+  currentTab = id;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['tab-check','tab-goods','tab-absent'][i] === id);
+  });
+  ['tab-check','tab-goods','tab-absent'].forEach(t => {
+    document.getElementById(t).style.display = t === id ? 'block' : 'none';
+  });
+}
+
+// ── 데이터 로드 ──
+function loadData() {
+  document.getElementById('loading').style.display = 'block';
+  ['tab-check','tab-goods','tab-absent'].forEach(t => {
+    document.getElementById(t).style.display = 'none';
+    document.getElementById(t).innerHTML = '';
+  });
+
+  const cbName = 'adminCb_' + Date.now();
+  const url = APPS_SCRIPT_URL + '?action=load&callback=' + cbName;
+
+  const timer = setTimeout(() => {
+    cleanup();
+    document.getElementById('loading').innerHTML = '⚠️ 로딩 실패. 새로고침 버튼을 눌러주세요.';
+  }, 12000);
+
+  function cleanup() {
+    clearTimeout(timer);
+    delete window[cbName];
+    const s = document.getElementById('admin-jsonp');
+    if (s) s.remove();
+  }
+
+  window[cbName] = function(res) {
+    cleanup();
+    document.getElementById('loading').style.display = 'none';
+    if (res.status === 'success') {
+      renderAll(res.checkData || [], res.goodsData || []);
+      showTab(currentTab);
+    } else {
+      document.getElementById('loading').textContent = '오류: ' + (res.message || '알 수 없는 오류');
+      document.getElementById('loading').style.display = 'block';
+    }
+  };
+
+  const script = document.createElement('script');
+  script.id  = 'admin-jsonp';
+  script.src = url;
+  script.onerror = () => {
+    cleanup();
+    document.getElementById('loading').textContent = '⚠️ 네트워크 오류';
+  };
+  document.head.appendChild(script);
+}
+
+// ── 전체 렌더링 ──
+function renderAll(checkData, goodsData) {
+  // 학교별 체크 집계
+  const schoolMap = {};
+  checkData.forEach(row => {
+    const s = row[1];
+    if (!schoolMap[s]) schoolMap[s] = { name:s, done:0, total:0, time:row[0], pct:0 };
+    schoolMap[s].total++;
+    if (row[4] === '✅ 완료') schoolMap[s].done++;
+    if (String(row[0]) > String(schoolMap[s].time)) schoolMap[s].time = row[0];
+  });
+  Object.values(schoolMap).forEach(s => {
+    s.pct = s.total ? Math.round(s.done/s.total*100) : 0;
+  });
+
+  const submitted = Object.keys(schoolMap);
+  const absent    = ALL_SCHOOLS.filter(s => !submitted.includes(s));
+  const completed = Object.values(schoolMap).filter(s => s.pct===100).length;
+
+  renderCheckTab(schoolMap, completed, absent.length);
+  renderGoodsTab(goodsData);
+  renderAbsentTab(absent, schoolMap);
+}
+
+// ── 체크리스트 탭 ──
+function renderCheckTab(schoolMap, completed, absentCount) {
+  const schools = Object.values(schoolMap).sort((a,b) => b.pct - a.pct);
+  const submitted = schools.length;
+
+  let html = `<div class="summary-cards">
+    <div class="sum-card" style="background:#eff6ff">
+      <div class="sc-label" style="color:#3b82f6">전체 학교</div>
+      <div class="sc-num" style="color:#1d4ed8">${ALL_SCHOOLS.length}</div>
+    </div>
+    <div class="sum-card" style="background:#f0fdf4">
+      <div class="sc-label" style="color:#16a34a">제출 완료</div>
+      <div class="sc-num" style="color:#15803d">${completed}</div>
+    </div>
+    <div class="sum-card" style="background:#fffbeb">
+      <div class="sc-label" style="color:#d97706">진행 중</div>
+      <div class="sc-num" style="color:#a16207">${submitted - completed}</div>
+    </div>
+    <div class="sum-card" style="background:#fef2f2">
+      <div class="sc-label" style="color:#dc2626">미제출</div>
+      <div class="sc-num" style="color:#b91c1c">${absentCount}</div>
+    </div>
+  </div>`;
+
+  html += `<div class="section"><h2>학교별 체크리스트 진행률</h2><div class="school-grid">`;
+  schools.forEach(s => {
+    const color = s.pct===100?'#16a34a':s.pct>=50?'#d97706':'#dc2626';
+    const bg    = s.pct===100?'#f0fdf4':s.pct>=50?'#fffbeb':'#fef2f2';
+    const bc    = s.pct===100?'#bbf7d0':s.pct>=50?'#fde68a':'#fecaca';
+    const time  = s.time ? String(s.time).substring(0,16) : '-';
+    const label = SCHOOL_LABELS[s.name] || s.name;
+    html += `<div class="school-card" style="background:${bg};border-color:${bc}">
+      <div class="sc-name">${label}</div>
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <span class="sc-pct" style="color:${color}">${s.pct}%</span>
+        <span style="font-size:12px;color:var(--muted)">${s.done}/${s.total}</span>
+      </div>
+      <div class="sc-bar-wrap"><div class="sc-bar" style="width:${s.pct}%;background:${color}"></div></div>
+      <div class="sc-meta">저장: ${time}</div>
+    </div>`;
+  });
+  html += `</div></div>`;
+  document.getElementById('tab-check').innerHTML = html;
+}
+
+// ── 물품 탭 ──
+function renderGoodsTab(goodsData) {
+  if (!goodsData || goodsData.length === 0) {
+    document.getElementById('tab-goods').innerHTML = '<div class="section"><h2>물품 신청 현황</h2><p style="color:var(--muted)">아직 제출된 물품 신청이 없습니다.</p></div>';
+    return;
+  }
+
+  // 학교별 그룹핑
+  const schoolGoods = {};
+  let grandTotal = 0;
+  goodsData.forEach(row => {
+    const school = row[1];
+    if (!schoolGoods[school]) schoolGoods[school] = [];
+    schoolGoods[school].push(row);
+    grandTotal += parseInt(row[7]) || 0;
+  });
+
+  let html = `<div class="section"><h2>물품 신청 현황</h2>
+    <div style="margin-bottom:16px;padding:12px 16px;background:#eff6ff;border-radius:8px;display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:700;color:#1d4ed8">전체 신청 합계</span>
+      <span style="font-size:20px;font-weight:800;color:#1d4ed8">${grandTotal.toLocaleString()} 원</span>
+    </div>`;
+
+  Object.entries(schoolGoods).forEach(([school, rows]) => {
+    const schoolTotal = rows.reduce((s, r) => s + (parseInt(r[7])||0), 0);
+    html += `<div style="margin-bottom:20px">
+      <div style="font-weight:700;font-size:15px;margin-bottom:8px;padding:8px 12px;background:#f1f5f9;border-radius:8px;display:flex;justify-content:space-between">
+        <span>${school}</span>
+        <span style="color:var(--blue)">${schoolTotal.toLocaleString()} 원</span>
+      </div>
+      <div class="goods-wrap"><table>
+        <thead><tr><th>No.</th><th>품명</th><th>규격</th><th>수량</th><th>단가</th><th>금액</th><th>사용 목적</th></tr></thead>
+        <tbody>`;
+    rows.forEach(row => {
+      html += `<tr>
+        <td style="text-align:center">${row[2]}</td>
+        <td>${row[3]}</td><td>${row[4]}</td>
+        <td class="right">${(parseInt(row[5])||0).toLocaleString()}</td>
+        <td class="right">${(parseInt(row[6])||0).toLocaleString()}</td>
+        <td class="right">${(parseInt(row[7])||0).toLocaleString()}</td>
+        <td>${row[8]}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div></div>`;
+  });
+  html += '</div>';
+  document.getElementById('tab-goods').innerHTML = html;
+}
+
+// ── 미제출 탭 ──
+function renderAbsentTab(absent, schoolMap) {
+  const inProgress = Object.values(schoolMap).filter(s => s.pct < 100);
+  let html = '';
+
+  // 미제출
+  html += `<div class="section"><h2>⚠️ 미제출 학교 (${absent.length}개교)</h2>`;
+  if (absent.length === 0) {
+    html += '<p style="color:var(--success);font-weight:700">모든 학교가 제출했습니다! 🎉</p>';
+  } else {
+    html += '<div class="absent-list">';
+    absent.forEach(s => { const lbl = SCHOOL_LABELS[s]||s; html += `<div class="absent-badge">${lbl}</div>`; });
+    html += '</div>';
+  }
+  html += '</div>';
+
+  // 진행 중
+  html += `<div class="section"><h2>🔄 진행 중 학교 (${inProgress.length}개교)</h2>`;
+  if (inProgress.length === 0) {
+    html += '<p style="color:var(--muted)">진행 중인 학교가 없습니다.</p>';
+  } else {
+    html += '<div class="school-grid">';
+    inProgress.sort((a,b) => b.pct - a.pct).forEach(s => {
+      const color = s.pct >= 50 ? '#d97706' : '#dc2626';
+      const bg    = s.pct >= 50 ? '#fffbeb' : '#fef2f2';
+      const lbl2 = SCHOOL_LABELS[s.name]||s.name;
+      html += `<div class="school-card" style="background:${bg};border-color:#e2e8f0">
+        <div class="sc-name">${lbl2}</div>
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span class="sc-pct" style="color:${color}">${s.pct}%</span>
+          <span style="font-size:12px;color:var(--muted)">${s.done}/${s.total}</span>
+        </div>
+        <div class="sc-bar-wrap"><div class="sc-bar" style="width:${s.pct}%;background:${color}"></div></div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+
+  document.getElementById('tab-absent').innerHTML = html;
+}
+
+document.getElementById('pw-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') tryLogin();
+});
+</script>
+</body>
+</html>
