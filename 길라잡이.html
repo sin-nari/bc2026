@@ -3,790 +3,742 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026 부천형 공동교육과정 계절학기(여름방학) 운영 길라잡이</title>
+<title>2026 부천형 공동교육과정 계절학기(여름) 운영 길라잡이</title>
 <style>
-
-:root {
-  --blue:#2458a6; --blue-light:#eaf1fb; --blue-dark:#10233f;
-  --teal:#0f766e; --teal-light:#ecfdf5;
-  --line:#e2e8f0; --text:#1e293b; --muted:#64748b;
-  --bg:#f4f6f9; --paper:#fff;
-  --sidebar-w:280px; --header-h:60px;
-  --success:#16a34a; --warn:#d97706; --danger:#dc2626;
+:root{
+  --blue:#2458a6;--blue-light:#eaf1fb;--blue-dark:#10233f;
+  --teal:#0f766e;--teal-light:#ecfdf5;
+  --line:#e2e8f0;--text:#1e293b;--muted:#64748b;
+  --bg:#f4f6f9;--paper:#fff;
+  --sidebar-w:268px;--header-h:58px;
+  --success:#16a34a;--warn:#d97706;--danger:#dc2626;
   --radius:12px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Pretendard","Noto Sans KR","Malgun Gothic",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:15px}
-
-/* ── Layout ── */
+body{font-family:"Pretendard","Noto Sans KR","Malgun Gothic",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.75;font-size:15px}
 #app{display:flex;height:100vh;overflow:hidden}
-#sidebar{width:var(--sidebar-w);background:var(--blue-dark);color:#fff;display:flex;flex-direction:column;flex-shrink:0;transition:transform .25s;z-index:10;overflow:hidden}
+
+/* ── 사이드바 ── */
+#sidebar{width:var(--sidebar-w);background:var(--blue-dark);color:#fff;display:flex;flex-direction:column;flex-shrink:0;overflow:hidden;z-index:10}
+#sb-header{padding:18px 16px 12px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
+#sb-header h1{font-size:13px;font-weight:700;line-height:1.6;color:#e2e8f0}
+#sb-header .badge{font-size:11px;color:#94a3b8;margin-top:4px}
+#sb-search{padding:8px 12px;flex-shrink:0}
+#sb-search input{width:100%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:13px;outline:none}
+#sb-search input::placeholder{color:#94a3b8}
+#nav{flex:1;overflow-y:auto;padding:4px 10px 8px}
+#nav::-webkit-scrollbar{width:3px}
+#nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:2px}
+.nav-section{font-size:10px;color:#475569;padding:10px 8px 3px;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.nav-item{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:7px;cursor:pointer;font-size:13px;color:#94a3b8;transition:all .15s;margin:1px 0;border:none;background:none;width:100%;text-align:left;text-decoration:none}
+.nav-item:hover{background:rgba(255,255,255,.08);color:#e2e8f0}
+.nav-item.active{background:rgba(255,255,255,.14);color:#fff;font-weight:600}
+#sb-bottom{padding:10px 10px 14px;border-top:1px solid rgba(255,255,255,.1);flex-shrink:0;background:rgba(0,0,0,.15)}
+#sb-bottom .nav-section{color:#475569}
+#sb-bottom .nav-item{color:#93c5fd;font-weight:600}
+#sb-bottom .nav-item:hover{background:rgba(255,255,255,.08);color:#bfdbfe}
+
+/* ── 메인 ── */
 #main{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0}
-#topbar{height:var(--header-h);background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 20px;flex-shrink:0;flex-wrap:wrap}
-#content{flex:1;overflow-y:auto;padding:28px;position:relative}
-
-/* ── Sidebar ── */
-#sidebar-header{padding:20px 18px 12px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
-#sidebar-header h1{font-size:14px;font-weight:700;line-height:1.5;color:#e2e8f0}
-#sidebar-header .badge{font-size:11px;color:#94a3b8;margin-top:6px}
-#sidebar-search{padding:10px 14px;flex-shrink:0}
-#sidebar-search input{width:100%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:7px 10px;color:#e2e8f0;font-size:13px;outline:none}
-#sidebar-search input::placeholder{color:#94a3b8}
-#nav{flex:1;overflow-y:auto;padding:6px 10px 16px}
-.nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#cbd5e1;transition:all .15s;margin:1px 0;text-decoration:none;border:none;background:none;width:100%;text-align:left}
-.nav-item:hover{background:rgba(255,255,255,.1);color:#fff}
-.nav-item.active{background:rgba(255,255,255,.15);color:#fff;font-weight:600}
-.nav-section{font-size:11px;color:#64748b;padding:12px 10px 4px;text-transform:uppercase;letter-spacing:.06em}
-
-/* ── Topbar ── */
-.tb-btn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:13px;font-weight:600;color:var(--text);transition:all .15s;white-space:nowrap}
+#topbar{height:var(--header-h);background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 22px;flex-shrink:0}
+.tb-title{font-weight:700;font-size:14px;color:var(--blue-dark);margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tb-btn{display:flex;align-items:center;gap:5px;padding:6px 13px;border-radius:8px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:13px;font-weight:600;color:var(--text);transition:all .15s;white-space:nowrap;text-decoration:none}
 .tb-btn:hover{background:#f8fafc;border-color:#cbd5e1}
-.tb-btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
-.tb-btn.primary:hover{background:#1d4ed8}
-.tb-btn.edit-active{background:#fef3c7;border-color:#f59e0b;color:#92400e}
-.tb-title{font-weight:700;font-size:15px;color:var(--blue-dark);margin-right:auto;white-space:nowrap}
-#save-status{font-size:12px;color:var(--muted);white-space:nowrap}
+#content{flex:1;overflow-y:auto;padding:24px 28px}
+#content::-webkit-scrollbar{width:5px}
+#content::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
 
-/* ── Sections ── */
-.section{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:40px 44px;margin-bottom:24px;scroll-margin-top:24px}
-.section.cover{min-height:500px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:8px solid var(--blue);background:linear-gradient(160deg,#f0f6ff 0%,#fff 60%)}
-.section.cover .eyebrow{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;margin-bottom:16px}
-.section.cover h2{font-size:36px;font-weight:800;line-height:1.25;color:#0f172a;margin-bottom:12px}
-.section.cover .subtitle{font-size:20px;font-weight:700;color:var(--blue)}
-.section.cover .org{margin-top:60px;font-size:18px;font-weight:800;color:#475569}
-.section h2.chapter{font-size:26px;font-weight:800;color:var(--blue);border-bottom:3px solid var(--blue);padding-bottom:10px;margin-bottom:24px}
-.section h3{font-size:19px;font-weight:700;margin:28px 0 10px;color:#111827}
-.section h4{font-size:16px;font-weight:700;margin:20px 0 8px;color:#374151}
-p{margin-bottom:10px}
+/* ── 섹션 ── */
+.section{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:36px 40px;margin-bottom:22px;scroll-margin-top:20px}
 
-/* ── Callouts ── */
-.note{background:var(--blue-light);border-left:5px solid var(--blue);padding:14px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}
-.tip{background:var(--teal-light);border-left:5px solid var(--teal);padding:14px 16px;border-radius:0 8px 8px 0;margin:16px 0;font-size:14px}
+/* ── 표지 ── */
+.cover{min-height:480px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-top:7px solid var(--blue);background:linear-gradient(155deg,#eef5ff 0%,#fff 55%)}
+.cover .eyebrow{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--teal);text-transform:uppercase;margin-bottom:14px}
+.cover h2{font-size:32px;font-weight:800;line-height:1.3;color:#0f172a;margin-bottom:10px}
+.cover .sub{font-size:18px;font-weight:700;color:var(--blue);margin-bottom:8px}
+.cover .org{margin-top:52px;font-size:16px;font-weight:800;color:#475569}
+.cover .period{font-size:13px;color:var(--muted);margin-top:6px}
 
-/* ── Tables ── */
-table{border-collapse:collapse;width:100%;margin:14px 0 24px;font-size:14px}
-th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}
+/* ── 챕터 제목 ── */
+.ch-title{font-size:24px;font-weight:800;color:var(--blue);border-bottom:3px solid var(--blue);padding-bottom:10px;margin-bottom:22px}
+h3.sh{font-size:18px;font-weight:700;margin:26px 0 10px;color:#111827;padding-left:10px;border-left:4px solid var(--blue)}
+h4.sh2{font-size:15px;font-weight:700;margin:18px 0 8px;color:#374151}
+p{margin-bottom:10px;line-height:1.8}
+
+/* ── 콜아웃 ── */
+.note{background:var(--blue-light);border-left:5px solid var(--blue);padding:13px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:14px}
+.tip{background:var(--teal-light);border-left:5px solid var(--teal);padding:13px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:14px}
+.warn{background:#fffbeb;border-left:5px solid var(--warn);padding:13px 16px;border-radius:0 8px 8px 0;margin:14px 0;font-size:14px}
+
+/* ── 표 ── */
+table{border-collapse:collapse;width:100%;margin:12px 0 20px;font-size:14px}
+th,td{border:1px solid var(--line);padding:10px 13px;vertical-align:top}
 th{background:#f1f5f9;text-align:center;font-weight:700;font-size:13px}
 
-/* ── Flow ── */
-.flow{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 20px;align-items:center}
-.flow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700;font-size:13px}
-.flow b{color:var(--muted);font-size:16px}
+/* ── 흐름도 ── */
+.flow{display:flex;flex-wrap:wrap;gap:5px;margin:12px 0 18px;align-items:center}
+.flow span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-weight:700;font-size:13px;white-space:nowrap}
+.flow b{color:var(--muted);font-size:15px}
 
-/* ── Checklist ── */
-.checklist-group{margin:16px 0}
-.check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 12px;border-radius:8px;margin:3px 0;cursor:pointer;transition:background .12s;border:1px solid transparent}
-.check-item:hover{background:#f8fafc;border-color:var(--line)}
-.check-item.done{background:#f0fdf4}
-.check-item.done .check-label{text-decoration:line-through;color:var(--muted)}
-.check-box{width:18px;height:18px;border-radius:5px;border:2px solid #cbd5e1;background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s}
-.check-box.checked{background:var(--success);border-color:var(--success)}
-.check-box.checked::after{content:'✓';color:#fff;font-size:11px;font-weight:800}
-.progress-bar-wrap{background:#e2e8f0;border-radius:999px;height:8px;margin:8px 0;overflow:hidden}
-.progress-bar{height:100%;background:var(--success);border-radius:999px;transition:width .4s}
-.progress-label{font-size:12px;color:var(--muted);margin-bottom:6px}
+/* ── 강좌 카드 ── */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:16px 0}
+.course-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;transition:all .2s;border-top:5px solid var(--blue)}
+.course-card:hover{box-shadow:0 6px 20px rgba(36,88,166,.12);transform:translateY(-2px)}
+.course-card .cc-subject{font-size:17px;font-weight:800;color:var(--blue-dark);margin-bottom:10px}
+.course-card .cc-row{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin:4px 0}
+.course-card .cc-row strong{color:var(--text);font-weight:600}
+.course-card .cc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.cc-tag{font-size:11px;padding:3px 9px;border-radius:999px;font-weight:600}
+.cc-tag.blue{background:#dbeafe;color:#1d4ed8}
+.cc-tag.green{background:#dcfce7;color:#15803d}
+.cc-tag.orange{background:#fed7aa;color:#c2410c}
 
-/* ── Details (FAQ) ── */
-details{border:1px solid var(--line);border-radius:10px;padding:0;margin:10px 0;background:#fff;overflow:hidden}
-summary{font-weight:700;cursor:pointer;padding:14px 16px;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:14px}
-summary::after{content:'＋';font-size:18px;color:var(--muted);flex-shrink:0}
-details[open] summary::after{content:'－'}
-details .detail-body{padding:0 16px 14px;font-size:14px;color:#374151;border-top:1px solid var(--line);padding-top:12px}
+/* ── 업무 흐름 ── */
+.workflow{margin:16px 0}
+.wf-step{display:flex;gap:14px;margin-bottom:8px;align-items:flex-start}
+.wf-num{width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.wf-content{flex:1;background:#f8fafc;border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.wf-content .wf-title{font-weight:700;font-size:14px;margin-bottom:3px}
+.wf-content .wf-desc{font-size:13px;color:var(--muted)}
+.wf-arrow{text-align:center;color:var(--muted);font-size:18px;margin:0 0 0 9px}
 
-/* ── Forms ── */
-.formbox{border:1px solid var(--line);border-radius:10px;padding:20px;margin:16px 0;background:#fafafa}
-.blank{display:inline-block;min-width:120px;border-bottom:1.5px solid #334155;height:1.1em;margin:0 4px}
+/* ── 업무자료실 ── */
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0}
+.resource-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:all .15s}
+.resource-card:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(36,88,166,.1)}
+.rc-icon{font-size:26px}
+.rc-name{font-size:14px;font-weight:700}
+.rc-desc{font-size:12px;color:var(--muted);flex:1}
+.rc-btn{display:block;text-align:center;padding:7px 12px;border-radius:7px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;text-decoration:none;transition:all .15s;border:none;cursor:pointer}
+.rc-btn:hover{background:#1d4ed8}
+.rc-btn.disabled{background:#e2e8f0;color:var(--muted);cursor:default;pointer-events:none}
 
-/* ── Timeline ── */
-#timeline-section .tl-container{position:relative;padding-left:32px;margin-top:20px}
-#timeline-section .tl-line{position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--line)}
-.tl-item{position:relative;margin-bottom:24px}
-.tl-dot{position:absolute;left:-26px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid var(--blue);background:var(--paper)}
-.tl-dot.done{background:var(--blue);border-color:var(--blue)}
-.tl-dot.current{background:var(--warn);border-color:var(--warn);box-shadow:0 0 0 4px #fef3c7}
-.tl-date{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:3px}
-.tl-title{font-weight:700;font-size:14px;margin-bottom:3px}
-.tl-desc{font-size:13px;color:#475569}
-.tl-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:600;margin-left:6px}
-.tl-badge.done-b{background:#dcfce7;color:#166534}
-.tl-badge.current-b{background:#fef3c7;color:#92400e}
-.tl-badge.upcoming-b{background:#f1f5f9;color:#64748b}
-
-/* ── FAQ Search ── */
-.faq-search-wrap{display:flex;gap:8px;margin-bottom:20px}
+/* ── FAQ ── */
+.faq-search-wrap{display:flex;gap:8px;margin-bottom:18px}
 .faq-search-wrap input{flex:1;padding:10px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;outline:none;transition:border .15s}
 .faq-search-wrap input:focus{border-color:var(--blue)}
-.faq-item{display:block}
-.faq-item.hidden{display:none}
+details.faq{border:1px solid var(--line);border-radius:10px;margin:8px 0;background:#fff;overflow:hidden}
+details.faq.hidden{display:none}
+details.faq summary{font-weight:700;cursor:pointer;padding:13px 16px;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:14px;gap:10px}
+details.faq summary::after{content:'＋';font-size:17px;color:var(--muted);flex-shrink:0}
+details.faq[open] summary{background:#f8fafc}
+details.faq[open] summary::after{content:'－'}
+.faq-body{padding:12px 16px 14px;border-top:1px solid var(--line);font-size:14px;color:#374151;line-height:1.8}
+.faq-cat{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:600;margin-right:6px;white-space:nowrap}
+.faq-cat.ops{background:#dbeafe;color:#1d4ed8}
+.faq-cat.attend{background:#dcfce7;color:#15803d}
+.faq-cat.grade{background:#fef3c7;color:#92400e}
+.faq-cat.neis{background:#f3e8ff;color:#6d28d9}
+.faq-cat.etc{background:#f1f5f9;color:#475569}
+#faq-empty{display:none;text-align:center;padding:28px;color:var(--muted);font-size:14px}
 
-/* ── Forms download ── */
-.forms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0}
-.form-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;cursor:pointer;transition:all .15s;display:flex;flex-direction:column;gap:8px}
-.form-card:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(36,88,166,.1)}
-.form-card .fc-icon{font-size:28px}
-.form-card .fc-name{font-size:14px;font-weight:700}
-.form-card .fc-desc{font-size:12px;color:var(--muted)}
-.form-card .fc-btn{margin-top:auto;padding:6px 12px;border-radius:6px;border:1px solid var(--blue);background:none;color:var(--blue);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;text-align:center}
-.form-card .fc-btn:hover{background:var(--blue);color:#fff}
-
-/* ── Edit mode ── */
-.editable:focus{outline:2px dashed #93c5fd;background:#f8fbff;border-radius:6px}
-[contenteditable="true"]{cursor:text}
-
-/* ── Scrollbar ── */
-#content::-webkit-scrollbar,#nav::-webkit-scrollbar{width:4px}
-#content::-webkit-scrollbar-track,#nav::-webkit-scrollbar-track{background:transparent}
-#content::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
-#nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
-
-/* ── Modal ── */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:center;justify-content:center}
-.modal-overlay.open{display:flex}
-.modal{background:#fff;border-radius:16px;padding:28px;max-width:600px;width:90%;max-height:80vh;overflow-y:auto}
-.modal h3{margin-bottom:16px;font-size:18px}
-.modal .close-btn{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;font-size:20px;color:var(--muted)}
-
-/* ── Toast ── */
-#toast{position:fixed;bottom:24px;right:24px;background:#334155;color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;font-weight:600;z-index:200;opacity:0;transform:translateY(8px);transition:all .25s;pointer-events:none}
-#toast.show{opacity:1;transform:translateY(0)}
+/* ── 타임라인 ── */
+.tl-wrap{position:relative;padding-left:28px;margin-top:16px}
+.tl-line{position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-item{position:relative;margin-bottom:22px}
+.tl-dot{position:absolute;left:-24px;top:4px;width:14px;height:14px;border-radius:50%;border:3px solid var(--blue);background:var(--paper)}
+.tl-dot.done{background:var(--blue)}
+.tl-dot.now{background:var(--warn);border-color:var(--warn);box-shadow:0 0 0 4px #fef3c7}
+.tl-date{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:2px}
+.tl-title{font-weight:700;font-size:14px}
+.tl-desc{font-size:13px;color:#475569;margin-top:2px}
+.tl-badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:600;margin-left:6px}
+.done-b{background:#dcfce7;color:#166534}
+.now-b{background:#fef3c7;color:#92400e}
+.up-b{background:#f1f5f9;color:#64748b}
 
 @media(max-width:768px){
-  #sidebar{position:fixed;top:0;left:0;bottom:0;transform:translateX(-100%)}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;transform:translateX(-100%);transition:transform .25s}
   #sidebar.open{transform:translateX(0)}
   #content{padding:16px}
-  .section{padding:24px 20px}
-  .section.cover h2{font-size:26px}
+  .section{padding:22px 18px}
+  .cover h2{font-size:24px}
+  #menu-btn{display:flex!important}
 }
 @media print{
   #sidebar,#topbar{display:none!important}
   #content{padding:0}
-  .section{border:none;box-shadow:none;border-radius:0;page-break-after:always;padding:18mm}
+  .section{border:none;box-shadow:none;border-radius:0;page-break-after:always;padding:16mm}
   body{background:#fff}
 }
-
-/* 읽기 전용 - 편집 불가 */
-* { user-select: text; }
 </style>
 </head>
 <body>
 <div id="app">
+
+<!-- 사이드바 -->
 <aside id="sidebar">
-  <div id="sidebar-header">
-    <h1>2026 부천형<br>공동교육과정<br>계절학기(여름방학) 운영 길라잡이</h1>
+  <div id="sb-header">
+    <h1>2026 부천형<br>공동교육과정<br>계절학기(여름) 운영 길라잡이</h1>
     <div class="badge">경기도부천교육지원청</div>
   </div>
-  <div id="sidebar-search">
-    <input id="nav-search" type="text" placeholder="🔍 챕터 검색..." oninput="filterNav(this.value)">
+  <div id="sb-search">
+    <input type="text" placeholder="🔍 챕터 검색..." oninput="filterNav(this.value)">
   </div>
   <nav id="nav">
-    <div class="nav-section">기본</div>
+    <div class="nav-section">개요</div>
     <button class="nav-item active" onclick="goTo('cover')">📄 표지</button>
-    <button class="nav-item" onclick="goTo('preface')">📝 발간사</button>
-    <button class="nav-item" onclick="goTo('timeline-section')">📅 운영 일정</button>
-    <div class="nav-section">본문</div>
-    <button class="nav-item" onclick="goTo('ch1')">Ⅰ. 운영 개요</button>
-    <button class="nav-item" onclick="goTo('ch2')">Ⅱ. 운영 절차</button>
-    <button class="nav-item" onclick="goTo('ch3')">Ⅲ. 운영교 업무</button>
-    <button class="nav-item" onclick="goTo('ch4')">Ⅳ. 참여학교 업무</button>
-    <button class="nav-item" onclick="goTo('ch5')">Ⅴ. 수업교사 업무</button>
-    <button class="nav-item" onclick="goTo('ch6')">Ⅵ. 출결 및 학점 이수</button>
-    <button class="nav-item" onclick="goTo('ch7')">Ⅶ. 평가 및 학생부</button>
-    <button class="nav-item" onclick="goTo('ch8')">Ⅷ. 나이스 업무</button>
-    <button class="nav-item" onclick="goTo('ch9')">Ⅸ. 예산 집행 및 정산</button>
-    <button class="nav-item" onclick="goTo('ch10')">Ⅹ. 안전관리</button>
+    <button class="nav-item" onclick="goTo('quick')">⚡ 빠른 시작 가이드</button>
+    <button class="nav-item" onclick="goTo('courses')">📚 2026 여름 운영 강좌</button>
+    <button class="nav-item" onclick="goTo('timeline')">📅 운영 일정</button>
+
+    <div class="nav-section">운영 절차</div>
+    <button class="nav-item" onclick="goTo('overview')">Ⅰ. 운영 개요</button>
+    <button class="nav-item" onclick="goTo('procedure')">Ⅱ. 운영 절차</button>
+
+    <div class="nav-section">업무 안내</div>
+    <button class="nav-item" onclick="goTo('hub')">Ⅲ. 거점교(운영교) 업무</button>
+    <button class="nav-item" onclick="goTo('part')">Ⅳ. 참여교 업무</button>
+    <button class="nav-item" onclick="goTo('teacher')">Ⅴ. 수업교사 업무</button>
+    <button class="nav-item" onclick="goTo('attend')">Ⅵ. 출결 및 학점 이수</button>
+    <button class="nav-item" onclick="goTo('eval')">Ⅶ. 평가 및 학생부</button>
+    <button class="nav-item" onclick="goTo('neis')">Ⅷ. 나이스 업무</button>
+    <button class="nav-item" onclick="goTo('budget')">Ⅸ. 예산 및 정산</button>
+    <button class="nav-item" onclick="goTo('safety')">Ⅹ. 안전관리</button>
+
     <div class="nav-section">부록</div>
-    <button class="nav-item" onclick="goTo('faq-section')">❓ FAQ 검색</button>
-    <button class="nav-item" onclick="goTo('forms-section')">📋 서식 안내</button>
+    <button class="nav-item" onclick="goTo('faq')">❓ FAQ</button>
+    <button class="nav-item" onclick="goTo('resources')">📁 업무자료실</button>
   </nav>
-  <!-- 바로가기 고정 하단 -->
-  <div style="padding:10px 10px 16px;border-top:1px solid rgba(255,255,255,.15);flex-shrink:0;background:rgba(0,0,0,.15)">
-    <div style="font-size:11px;color:#64748b;padding:4px 10px 6px;text-transform:uppercase;letter-spacing:.06em">바로가기</div>
-    <a class="nav-item" href="학교담당자.html" style="color:#93c5fd;text-decoration:none;font-weight:600">📋 학교담당자 페이지</a>
-    <a class="nav-item" href="관리자.html" style="color:#93c5fd;text-decoration:none;font-weight:600">🔐 관리자 페이지</a>
+  <div id="sb-bottom">
+    <div class="nav-section">바로가기</div>
+    <a class="nav-item" href="학교담당자.html">📋 학교담당자 페이지</a>
+    <a class="nav-item" href="관리자.html">🔐 관리자 페이지</a>
   </div>
 </aside>
+
+<!-- 메인 -->
 <div id="main">
   <div id="topbar">
     <button class="tb-btn" id="menu-btn" onclick="toggleSidebar()" style="display:none">☰</button>
-    <span class="tb-title">2026 부천형 공동교육과정 계절학기(여름방학) 운영 길라잡이</span>
-    <span style="font-size:12px;color:var(--muted);margin-left:auto">📖 읽기 전용</span>
+    <span class="tb-title">2026 부천형 공동교육과정 계절학기(여름) 운영 길라잡이</span>
+    <span style="font-size:12px;color:var(--muted)">📖 읽기 전용</span>
     <button class="tb-btn" onclick="window.print()">🖨️ PDF 출력</button>
   </div>
+
   <div id="content">
+
     <!-- 표지 -->
     <section id="cover" class="section cover">
-      <div class="eyebrow">2026 BUCHEON SEASONAL JOINT CURRICULUM</div>
-      <h2 class="editable">2026 부천형 공동교육과정<br>계절학기(여름방학) 운영 길라잡이</h2>
-      <div class="subtitle editable">배움을 잇고 미래를 열다</div>
-      <div class="org editable">경기도부천교육지원청</div>
+      <div class="eyebrow">2026 Bucheon Joint Curriculum · Summer Session</div>
+      <h2>2026 부천형 공동교육과정<br>계절학기(여름) 운영 길라잡이</h2>
+      <div class="sub">배움을 잇고 미래를 열다</div>
+      <div class="org">경기도부천교육지원청</div>
+      <div class="period">2026학년도 여름방학 운영</div>
     </section>
 
-    <!-- 발간사 -->
-    <section id="preface" class="section">
-      <h2 class="chapter">발간사</h2>
-      <div class="editable">
-        <p>학생의 진로와 적성에 따른 과목 선택권 확대는 고교학점제의 핵심 가치입니다.</p>
-        <p>부천교육지원청은 학생의 다양한 학습 요구를 지원하고 학교 간 교육과정 공유를 활성화하기 위하여 공동교육과정을 운영하고 있으며, 2026학년도에는 학생 선택 중심 교육과정의 실질적 운영을 지원하기 위하여 「부천형 공동교육과정 계절학기」를 운영하고자 합니다.</p>
-        <p>부천형 공동교육과정 계절학기는 학기 중 운영되는 공동교육과정을 보완하고 학생의 과목 선택 기회를 확대하기 위하여 학기말 온라인 운영과 방학 중 집중 운영을 연계한 형태로 운영됩니다.</p>
-        <p>본 길라잡이는 운영교, 참여학교 및 수업교사가 공동교육과정을 안정적으로 운영할 수 있도록 운영 절차와 업무 처리 방법을 안내하기 위하여 제작하였습니다.</p>
-        <p>본 자료가 학생 맞춤형 교육과정 운영과 고교학점제 안착에 도움이 되기를 기대합니다.</p>
-        <p style="text-align:right;margin-top:40px;">2026.<br>경기도부천교육지원청</p>
+    <!-- 빠른 시작 가이드 -->
+    <section id="quick" class="section">
+      <h2 class="ch-title">⚡ 빠른 시작 가이드</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px">처음 담당하시는 분도 5분 안에 필요한 정보를 찾을 수 있습니다.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+        <div onclick="goTo('hub')" style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:18px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size:24px;margin-bottom:8px">🏫</div>
+          <div style="font-weight:700;font-size:14px;color:#1d4ed8;margin-bottom:4px">거점교 담당자</div>
+          <div style="font-size:12px;color:#3b82f6">강좌 개설·수업 운영·성적 처리</div>
+        </div>
+        <div onclick="goTo('part')" style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:18px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size:24px;margin-bottom:8px">🏢</div>
+          <div style="font-weight:700;font-size:14px;color:#15803d;margin-bottom:4px">참여교 담당자</div>
+          <div style="font-size:12px;color:#16a34a">수강 승인·학생부 반영</div>
+        </div>
+        <div onclick="goTo('teacher')" style="background:#fefce8;border:1px solid #fde68a;border-radius:10px;padding:18px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size:24px;margin-bottom:8px">👩‍🏫</div>
+          <div style="font-weight:700;font-size:14px;color:#a16207;margin-bottom:4px">수업교사</div>
+          <div style="font-size:12px;color:#ca8a04">수업 운영·출결·평가·세특</div>
+        </div>
+        <div onclick="goTo('neis')" style="background:#faf5ff;border:1px solid #e9d5ff;border-radius:10px;padding:18px;cursor:pointer;transition:all .2s" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">
+          <div style="font-size:24px;margin-bottom:8px">💻</div>
+          <div style="font-weight:700;font-size:14px;color:#6d28d9;margin-bottom:4px">나이스 처리</div>
+          <div style="font-size:12px;color:#7c3aed">과목 개설·성적 전송</div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top:20px">
+        <strong>📌 처음이신가요?</strong> 왼쪽 목차에서 담당 역할을 클릭하시거나, 위 카드를 클릭하면 해당 업무로 바로 이동합니다.
+        체크리스트와 물품 신청은 <a href="학교담당자.html" style="color:var(--blue);font-weight:700">📋 학교담당자 페이지</a>에서 바로 작성할 수 있습니다.
       </div>
     </section>
 
-    <!-- 타임라인 -->
-    <section id="timeline-section" class="section">
-      <h2 class="chapter">📅 운영 일정 타임라인</h2>
-      <p style="color:var(--muted);font-size:14px;margin-bottom:16px">현재 진행 상황을 한눈에 확인하세요.</p>
-      <div class="tl-container">
+    <!-- 운영 강좌 -->
+    <section id="courses" class="section">
+      <h2 class="ch-title">📚 2026 여름 운영 강좌</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:18px">2026학년도 계절학기(여름) 개설 강좌입니다.</p>
+
+      <div class="course-grid">
+        <!-- 보건 -->
+        <div class="course-card">
+          <div class="cc-subject">보건</div>
+          <div class="cc-row">🏫 <strong>거점교</strong> 부천여자고등학교</div>
+          <div class="cc-row">👩‍🎓 <strong>대상 학년</strong> 2학년</div>
+          <div class="cc-row">📝 <strong>학점</strong> 2학점 (32차시)</div>
+          <div class="cc-row">📋 <strong>교과</strong> 교양</div>
+          <div class="cc-row">🖥️ <strong>운영 형태</strong> 온라인(실시간 쌍방향)</div>
+          <div class="cc-tags">
+            <span class="cc-tag blue">학기말 온라인 사전수업</span>
+            <span class="cc-tag green">여름방학 집중수업</span>
+            <span class="cc-tag orange">1학기 학점 인정</span>
+          </div>
+        </div>
+        <!-- 교육의 이해A -->
+        <div class="course-card">
+          <div class="cc-subject">교육의 이해 A</div>
+          <div class="cc-row">🏫 <strong>거점교</strong> 부천여자고등학교</div>
+          <div class="cc-row">👩‍🎓 <strong>대상 학년</strong> 2학년</div>
+          <div class="cc-row">📝 <strong>학점</strong> 2학점 (32차시)</div>
+          <div class="cc-row">📋 <strong>교과</strong> 교양</div>
+          <div class="cc-row">🖥️ <strong>운영 형태</strong> 온라인(실시간 쌍방향)</div>
+          <div class="cc-tags">
+            <span class="cc-tag blue">학기말 온라인 사전수업</span>
+            <span class="cc-tag green">여름방학 집중수업</span>
+            <span class="cc-tag orange">1학기 학점 인정</span>
+          </div>
+        </div>
+        <!-- 교육의 이해B -->
+        <div class="course-card">
+          <div class="cc-subject">교육의 이해 B</div>
+          <div class="cc-row">🏫 <strong>거점교</strong> 정명고등학교</div>
+          <div class="cc-row">👩‍🎓 <strong>대상 학년</strong> 2학년</div>
+          <div class="cc-row">📝 <strong>학점</strong> 2학점 (32차시)</div>
+          <div class="cc-row">📋 <strong>교과</strong> 교양</div>
+          <div class="cc-row">🖥️ <strong>운영 형태</strong> 온라인(실시간 쌍방향)</div>
+          <div class="cc-tags">
+            <span class="cc-tag blue">학기말 온라인 사전수업</span>
+            <span class="cc-tag green">여름방학 집중수업</span>
+            <span class="cc-tag orange">1학기 학점 인정</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip">
+        <strong>💡 운영 특징</strong><br>
+        · 학기말 온라인 사전수업 + 여름방학 집중수업 연계 운영<br>
+        · 실시간 쌍방향 수업 원칙<br>
+        · 방학 종료 전 성적 처리 완료<br>
+        · 1학기 학점으로 인정
+      </div>
+    </section>
+
+    <!-- 운영 일정 -->
+    <section id="timeline" class="section">
+      <h2 class="ch-title">📅 운영 일정</h2>
+      <div class="tl-wrap">
         <div class="tl-line"></div>
         <div class="tl-item">
           <div class="tl-dot done"></div>
           <div class="tl-date">5월</div>
-          <div class="tl-title">운영 계획 안내 · 운영교 모집<span class="tl-badge done-b">완료</span></div>
-          <div class="tl-desc">교육지원청 → 학교 안내, 운영교 신청서 접수</div>
+          <div class="tl-title">운영 계획 안내 · 거점교 모집<span class="tl-badge done-b">완료</span></div>
+          <div class="tl-desc">교육지원청 → 학교 안내, 거점교 신청서 접수</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot done"></div>
           <div class="tl-date">6월 초</div>
-          <div class="tl-title">개설 과목 확정 · 수강신청 안내<span class="tl-badge done-b">완료</span></div>
-          <div class="tl-desc">과목 확정, 가정통신문 발송, 수강신청 링크 안내</div>
+          <div class="tl-title">개설 강좌 확정 · 수강신청 안내<span class="tl-badge done-b">완료</span></div>
+          <div class="tl-desc">강좌 확정, 가정통신문 발송, 수강신청 안내</div>
         </div>
         <div class="tl-item">
-          <div class="tl-dot current"></div>
+          <div class="tl-dot now"></div>
           <div class="tl-date">6월 중</div>
-          <div class="tl-title">수강신청 및 수강생 확정<span class="tl-badge current-b">진행 중</span></div>
+          <div class="tl-title">수강신청 및 수강생 확정<span class="tl-badge now-b">진행 중</span></div>
           <div class="tl-desc">학생 수강신청, 수강생 명단 확정, 개별 안내</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-date">6월 말 ~ 7월</div>
-          <div class="tl-title">학기말 온라인 운영<span class="tl-badge upcoming-b">예정</span></div>
-          <div class="tl-desc">LMS 활용 온라인 수업 선행 운영</div>
+          <div class="tl-date">6월 말 ~ 7월 초</div>
+          <div class="tl-title">학기말 온라인 사전수업<span class="tl-badge up-b">예정</span></div>
+          <div class="tl-desc">LMS 활용 온라인 실시간 쌍방향 수업</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
           <div class="tl-date">7월 ~ 8월</div>
-          <div class="tl-title">여름방학 집중 운영<span class="tl-badge upcoming-b">예정</span></div>
-          <div class="tl-desc">오프라인·혼합형 수업 집중 운영 (32차시, 2학점)</div>
+          <div class="tl-title">여름방학 집중수업<span class="tl-badge up-b">예정</span></div>
+          <div class="tl-desc">32차시, 2학점 집중 운영</div>
         </div>
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-date">8월</div>
-          <div class="tl-title">평가 · 성적 처리 · 학생부 입력 · 결과보고<span class="tl-badge upcoming-b">예정</span></div>
-          <div class="tl-desc">세특 작성, 나이스 입력, 정산서 제출</div>
+          <div class="tl-date">8월 (방학 종료 전)</div>
+          <div class="tl-title">평가 · 성적 처리 · 학생부 입력 · 결과보고<span class="tl-badge up-b">예정</span></div>
+          <div class="tl-desc">세특 작성, 나이스 성적 전송, 결과보고서 제출</div>
         </div>
       </div>
     </section>
 
-    <!-- CH1 운영 개요 -->
-    <section id="ch1" class="section">
-      <h2 class="chapter">Ⅰ. 운영 개요</h2>
-      <div class="editable">
-        <h3>1. 목적</h3>
-        <p>가. 학생의 진로·적성 및 학업 설계에 따른 과목 선택권을 확대한다.</p>
-        <p>나. 학교 교육과정에 개설되지 않은 과목의 이수 기회를 제공한다.</p>
-        <p>다. 학교 간 교육과정 공유를 통한 교육과정 다양화 및 특성화를 지원한다.</p>
-        <p>라. 학생 맞춤형 교육과정 운영을 통한 고교학점제 안착을 지원한다.</p>
-        <h3>2. 운영 근거</h3>
-        <p>가. 초·중등교육법 및 같은 법 시행령</p>
-        <p>나. 초·중등학교 교육과정 총론</p>
-        <p>다. 경기도 고등학교 교육과정 편성·운영 지침</p>
-        <p>라. 2026학년도 공동교육과정 운영 계획 및 운영 안내</p>
-        <p>마. 경기도 고등학교 학업성적관리 시행지침</p>
-        <h3>3. 운영 방침</h3>
-        <p>가. 학생의 3개년 교육과정 기준 재적교에 개설되지 않은 과목을 대상으로 운영한다.</p>
-        <p>나. 공동교육과정 운영 지침 및 학업성적관리 시행지침을 준수한다.</p>
-        <p>다. 학생 수요를 기반으로 운영교를 지정하고 과목을 개설한다.</p>
-        <p>라. 온라인 및 오프라인 형태로 운영할 수 있으며, 필요시 혼합형으로 운영한다.</p>
-        <p>마. 학점 이수 기준과 성취평가제 운영 원칙을 준수한다.</p>
-        <p>바. 운영교, 참여학교, 수업교사 간 협력체계를 구축하여 안정적으로 운영한다.</p>
-        <h3>4. 운영 모형</h3>
-      </div>
-      <div class="note">부천형 계절학기는 학기말 온라인 운영과 방학 중 집중 운영을 연계하여 운영하는 공동교육과정 모델이다.</div>
-      <div class="flow"><span>수요조사</span><b>→</b><span>운영교 선정</span><b>→</b><span>과목 개설</span><b>→</b><span>수강신청</span><b>→</b><span>수강생 확정</span><b>→</b><span>학기말 온라인</span><b>→</b><span>방학 집중</span><b>→</b><span>성적·학생부</span></div>
-      <table>
-        <tr><th>구분</th><th>내용</th></tr>
-        <tr><td>운영 시기</td><td>여름방학 중심, 필요시 학기말 온라인 사전 운영 병행</td></tr>
-        <tr><td>운영 학점</td><td>2학점</td></tr>
-        <tr><td>운영 차시</td><td>2022 개정 교육과정 기준 32차시</td></tr>
-        <tr><td>운영 방식</td><td>온라인·오프라인·혼합형</td></tr>
-        <tr><td>운영 대상</td><td>부천 관내 고등학교 재학생</td></tr>
-      </table>
-      <div class="editable">
-        <h3>5. 운영 주체별 역할</h3>
-      </div>
+    <!-- I. 운영 개요 -->
+    <section id="overview" class="section">
+      <h2 class="ch-title">Ⅰ. 운영 개요</h2>
+
+      <h3 class="sh">1. 목적</h3>
+      <p>가. 학생의 진로·적성 및 학업 설계에 따른 과목 선택권을 확대한다.</p>
+      <p>나. 학교 교육과정에 개설되지 않은 과목의 이수 기회를 제공한다.</p>
+      <p>다. 학교 간 교육과정 공유를 통한 교육과정 다양화 및 특성화를 지원한다.</p>
+      <p>라. 학생 맞춤형 교육과정 운영을 통한 고교학점제 안착을 지원한다.</p>
+
+      <h3 class="sh">2. 운영 근거</h3>
+      <p>가. 초·중등교육법 및 같은 법 시행령</p>
+      <p>나. 초·중등학교 교육과정 총론</p>
+      <p>다. 경기도 고등학교 교육과정 편성·운영 지침</p>
+      <p>라. 2026학년도 공동교육과정 운영 계획 및 운영 안내</p>
+      <p>마. 경기도 고등학교 학업성적관리 시행지침</p>
+
+      <h3 class="sh">3. 운영 방침</h3>
+      <p>가. 학생의 3개년 교육과정 기준 재적교에 개설되지 않은 과목을 대상으로 운영한다.</p>
+      <p>나. 공동교육과정 운영 지침 및 학업성적관리 시행지침을 준수한다.</p>
+      <p>다. 학생 수요를 기반으로 거점교를 지정하고 강좌를 개설한다.</p>
+      <p>라. 학기말 온라인 사전수업과 여름방학 집중수업을 연계하여 운영한다.</p>
+      <p>마. 학점 이수 기준과 성취평가제 운영 원칙을 준수한다.</p>
+
+      <h3 class="sh">4. 운영 주체별 역할</h3>
       <table>
         <tr><th>주체</th><th>주요 역할</th></tr>
-        <tr><td><strong>교육지원청</strong></td><td>운영 계획 수립, 운영교 지정, 예산 지원, 연수 운영, 모니터링 및 환류</td></tr>
-        <tr><td><strong>운영교</strong></td><td>강좌 개설, 수강생 관리, 수업 운영, 성적 처리, 학교생활기록부 입력</td></tr>
-        <tr><td><strong>참여학교</strong></td><td>학생 안내, 수강 신청 지원, 학점 이수 관리, 학생부 반영 확인</td></tr>
+        <tr><td><strong>교육지원청</strong></td><td>운영 계획 수립, 거점교 지정, 예산 지원, 연수 운영, 모니터링 및 환류</td></tr>
+        <tr><td><strong>거점교(운영교)</strong></td><td>강좌 개설, 수강생 관리, 수업 운영, 성적 처리, 학교생활기록부 입력 및 전송</td></tr>
+        <tr><td><strong>참여교</strong></td><td>학생 수강 승인, 성적산출기준명 등록, 학생부 반영 확인</td></tr>
         <tr><td><strong>수업교사</strong></td><td>수업 운영, 출결 관리, 평가 실시, 세부능력 및 특기사항 작성</td></tr>
-        <tr><td><strong>협력교사</strong></td><td>수업 지원, 출결 관리 지원, 평가 및 기록 지원, 나이스 업무 지원</td></tr>
       </table>
     </section>
 
-    <!-- CH2 운영 절차 -->
-    <section id="ch2" class="section">
-      <h2 class="chapter">Ⅱ. 운영 절차</h2>
-      <div class="editable">
-        <h3>1. 전체 업무 흐름</h3>
+    <!-- II. 운영 절차 -->
+    <section id="procedure" class="section">
+      <h2 class="ch-title">Ⅱ. 운영 절차</h2>
+
+      <h3 class="sh">전체 업무 흐름</h3>
+      <div class="flow">
+        <span>거점교 모집</span><b>→</b>
+        <span>강좌 확정</span><b>→</b>
+        <span>수강신청</span><b>→</b>
+        <span>수강생 확정</span><b>→</b>
+        <span>사전수업</span><b>→</b>
+        <span>집중수업</span><b>→</b>
+        <span>성적 처리</span><b>→</b>
+        <span>학생부 반영</span><b>→</b>
+        <span>결과보고</span>
       </div>
-      <div class="flow"><span>운영 계획 안내</span><b>→</b><span>운영교 모집</span><b>→</b><span>과목 확정</span><b>→</b><span>수강신청</span><b>→</b><span>수강생 확정</span><b>→</b><span>수업 운영</span><b>→</b><span>성적 처리</span><b>→</b><span>결과 보고</span></div>
-      <div class="editable"><h3>2. 단계별 추진 내용</h3></div>
+
+      <h3 class="sh">단계별 추진 내용</h3>
       <table>
-        <tr><th>단계</th><th>추진 내용</th><th>주체</th><th>주요 산출물</th></tr>
-        <tr><td>1</td><td>운영교 모집</td><td>교육지원청, 학교</td><td>운영교 신청서</td></tr>
-        <tr><td>2</td><td>과목 개설 협의</td><td>교육지원청, 운영교</td><td>개설 과목 목록</td></tr>
-        <tr><td>3</td><td>수강신청 안내</td><td>교육지원청, 참여학교</td><td>가정통신문, 신청 링크</td></tr>
-        <tr><td>4</td><td>수강생 확정</td><td>교육지원청, 운영교</td><td>확정 명단</td></tr>
-        <tr><td>5</td><td>운영계획서 제출</td><td>운영교, 수업교사</td><td>수업운영계획서, 평가계획</td></tr>
-        <tr><td>6</td><td>수업 운영</td><td>수업교사, 협력교사</td><td>출석부, 수업자료</td></tr>
-        <tr><td>7</td><td>평가 및 성적 처리</td><td>수업교사, 운영교</td><td>성적자료, 세특</td></tr>
-        <tr><td>8</td><td>결과 보고 및 정산</td><td>운영교, 교육지원청</td><td>결과보고서, 정산서</td></tr>
+        <tr><th>단계</th><th>추진 내용</th><th>주체</th><th>산출물</th></tr>
+        <tr><td>1</td><td>거점교 모집 및 지정</td><td>교육지원청, 학교</td><td>거점교 신청서</td></tr>
+        <tr><td>2</td><td>강좌 개설 협의</td><td>교육지원청, 거점교</td><td>개설 강좌 목록</td></tr>
+        <tr><td>3</td><td>수강신청 안내</td><td>교육지원청, 참여교</td><td>가정통신문</td></tr>
+        <tr><td>4</td><td>수강생 확정</td><td>교육지원청, 거점교</td><td>확정 명단</td></tr>
+        <tr><td>5</td><td>운영계획서 제출</td><td>거점교, 수업교사</td><td>수업운영계획서</td></tr>
+        <tr><td>6</td><td>학기말 온라인 사전수업</td><td>수업교사</td><td>출결부, 수업자료</td></tr>
+        <tr><td>7</td><td>여름방학 집중수업</td><td>수업교사</td><td>출결부, 수업자료</td></tr>
+        <tr><td>8</td><td>평가 및 성적 처리</td><td>수업교사, 거점교</td><td>성적자료, 세특</td></tr>
+        <tr><td>9</td><td>나이스 성적 전송</td><td>거점교</td><td>전송 확인</td></tr>
+        <tr><td>10</td><td>학생부 반영 확인</td><td>참여교</td><td>반영 결과</td></tr>
+        <tr><td>11</td><td>결과보고 및 정산</td><td>거점교, 교육지원청</td><td>결과보고서, 정산서</td></tr>
       </table>
-      <div class="editable">
-        <h3>3. 추진 일정 예시</h3>
+    </section>
+
+    <!-- III. 거점교 업무 -->
+    <section id="hub" class="section">
+      <h2 class="ch-title">Ⅲ. 거점교(운영교) 업무</h2>
+
+      <h3 class="sh">업무 흐름</h3>
+      <div class="workflow">
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><div class="wf-title">준비</div><div class="wf-desc">학교운영위원회 심의 · 운영계획 수립 · 운영계획서 제출</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><div class="wf-title">학생 모집</div><div class="wf-desc">강좌 개설 · 수강신청 안내 · 수강생 확정 · 학생 등록</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">3</div><div class="wf-content"><div class="wf-title">수업 운영</div><div class="wf-desc">학기말 온라인 사전수업 · 여름방학 집중수업 · 출결 관리</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">4</div><div class="wf-content"><div class="wf-title">성적 처리</div><div class="wf-desc">평가 실시 · 성적 산출 · 세특 입력</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">5</div><div class="wf-content"><div class="wf-title">자료 전송 · 결과보고</div><div class="wf-desc">나이스 성적 및 세특 전송 · 운영 결과 제출 · 정산</div></div></div>
       </div>
+
+      <h3 class="sh">제출 자료</h3>
       <table>
-        <tr><th>시기</th><th>내용</th></tr>
-        <tr><td>5월</td><td>운영 계획 안내, 운영교 모집</td></tr>
-        <tr><td>6월 초</td><td>개설 과목 확정, 수강신청 안내</td></tr>
-        <tr><td>6월 중</td><td>수강신청 및 수강생 확정</td></tr>
-        <tr><td>6월 말~7월</td><td>학기말 온라인 운영</td></tr>
-        <tr><td>7월~8월</td><td>여름방학 집중 운영</td></tr>
-        <tr><td>8월</td><td>평가, 성적 처리, 학생부 입력, 결과보고</td></tr>
+        <tr><th>구분</th><th>제출 자료</th><th>시기</th></tr>
+        <tr><td>사전</td><td>운영계획서, 안전관리계획, 수업교사 명단</td><td>수업 시작 전</td></tr>
+        <tr><td>운영 중</td><td>출결부, 수업일지</td><td>매 수업 후</td></tr>
+        <tr><td>완료 후</td><td>운영 결과보고서, 정산서, 만족도 조사 결과</td><td>방학 종료 전</td></tr>
       </table>
+
+      <div class="tip">체크리스트는 <a href="학교담당자.html" style="color:var(--teal);font-weight:700">📋 학교담당자 페이지</a>에서 항목별로 체크하고 구글 시트에 저장할 수 있습니다.</div>
     </section>
 
-    <!-- CH3 운영교 업무 -->
-    <section id="ch3" class="section">
-      <h2 class="chapter">Ⅲ. 운영교 업무</h2>
-      <div class="editable">
-        <h3>1. 운영교의 역할</h3>
-        <p>운영교는 공동교육과정 강좌 개설부터 성적 처리 및 학교생활기록부 입력까지 전반적인 운영을 담당한다.</p>
-        <h3>2. 운영교 업무 흐름</h3>
+    <!-- IV. 참여교 업무 -->
+    <section id="part" class="section">
+      <h2 class="ch-title">Ⅳ. 참여교 업무</h2>
+
+      <h3 class="sh">업무 흐름</h3>
+      <div class="workflow">
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><div class="wf-title">수강 승인</div><div class="wf-desc">수강학생 확인 · 수강 승인 처리</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><div class="wf-title">나이스 등록</div><div class="wf-desc">성적산출기준명 등록</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">3</div><div class="wf-content"><div class="wf-title">학생 관리</div><div class="wf-desc">수업 참여 확인 · 출결 관리 · 학생 상담</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">4</div><div class="wf-content"><div class="wf-title">자료 수신</div><div class="wf-desc">거점교로부터 성적 및 세특 자료 수신 확인</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">5</div><div class="wf-content"><div class="wf-title">학생부 반영</div><div class="wf-desc">학교생활기록부 교과학습발달상황 반영 · 최종 확인</div></div></div>
       </div>
-      <div class="flow"><span>운영교 지정</span><b>→</b><span>수업교사 확보</span><b>→</b><span>운영계획서 제출</span><b>→</b><span>과목 개설</span><b>→</b><span>수강생 등록</span><b>→</b><span>수업 운영</span><b>→</b><span>성적·학생부</span><b>→</b><span>결과보고</span></div>
-      <div class="editable">
-        <h3>3. 제출 자료</h3>
-      </div>
-      <table>
-        <tr><th>구분</th><th>제출 자료</th></tr>
-        <tr><td>필수</td><td>운영계획서, 안전관리계획, 수업교사 명단, 협력교사 명단</td></tr>
-        <tr><td>선택</td><td>예산 집행 계획, 기자재 활용 계획, 물품 신청서</td></tr>
-      </table>
-      <div class="editable">
-        <h3>4. 수업운영계획서 확인</h3>
-        <p>운영교는 수업교사가 제출한 수업운영계획서의 과목명, 학점, 운영 차시, 평가 방법, 성취기준 반영 여부를 확인한다.</p>
-        <h3>5. 운영교 체크리스트</h3>
-      </div>
-      <details open>
-        <summary>운영 전 체크리스트</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch3-pre">
-            <div class="progress-label" id="prog-ch3-pre">0 / 5 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch3-pre" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">운영계획 제출</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">수업교사 확보</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">협력교사 확보</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">물품 신청</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-pre')"><div class="check-box"></div><div class="check-label">수강생 확정</div></div>
-          </div>
-        </div>
-      </details>
-      <details>
-        <summary>운영 중 체크리스트</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch3-mid">
-            <div class="progress-label" id="prog-ch3-mid">0 / 4 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch3-mid" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">출결 관리</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">수업 모니터링</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">평가 운영</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-mid')"><div class="check-box"></div><div class="check-label">안전 관리</div></div>
-          </div>
-        </div>
-      </details>
-      <details>
-        <summary>운영 후 체크리스트</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch3-post">
-            <div class="progress-label" id="prog-ch3-post">0 / 4 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch3-post" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">성적 처리</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">학생부 입력</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">정산</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch3-post')"><div class="check-box"></div><div class="check-label">결과보고</div></div>
-          </div>
-        </div>
-      </details>
+
+      <div class="warn"><strong>⚠️ 주의</strong> 성적산출기준명은 거점교와 동일하게 등록해야 합니다. 사전에 거점교 담당자와 협의하세요.</div>
     </section>
 
-    <!-- CH4 참여학교 업무 -->
-    <section id="ch4" class="section">
-      <h2 class="chapter">Ⅳ. 참여학교 업무</h2>
-      <div class="editable">
-        <h3>1. 참여학교의 역할</h3>
-        <p>참여학교는 공동교육과정에 참여하는 학생의 소속학교로서 학생의 수강 신청부터 학점 이수 확인, 학교생활기록부 반영까지의 업무를 담당한다.</p>
-        <h3>2. 참여학교 업무 흐름</h3>
+    <!-- V. 수업교사 업무 -->
+    <section id="teacher" class="section">
+      <h2 class="ch-title">Ⅴ. 수업교사 업무</h2>
+
+      <h3 class="sh">업무 흐름</h3>
+      <div class="workflow">
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><div class="wf-title">수업 준비</div><div class="wf-desc">강사카드 제출 · 수업운영계획서 작성 · 평가계획 수립 · 물품 신청</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><div class="wf-title">수강생 안내</div><div class="wf-desc">운영 일정 · 수업 방식 · LMS 접속 방법 · 평가 방법 · 출결 기준 안내</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">3</div><div class="wf-content"><div class="wf-title">수업 운영 · 출결 관리</div><div class="wf-desc">학기말 온라인 사전수업 + 여름방학 집중수업 · 출결부 작성</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">4</div><div class="wf-content"><div class="wf-title">평가 · 성적 처리</div><div class="wf-desc">수행평가 실시 · 성적 산출 · 미이수 학생 보완 지도</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">5</div><div class="wf-content"><div class="wf-title">세특 작성 · 결과 제출</div><div class="wf-desc">학생별 세부능력 및 특기사항 작성 · 거점교에 결과 제출</div></div></div>
       </div>
-      <div class="flow"><span>안내</span><b>→</b><span>수요 파악</span><b>→</b><span>수강 신청</span><b>→</b><span>확정 확인</span><b>→</b><span>수업 참여 관리</span><b>→</b><span>이수 확인</span><b>→</b><span>학생부 반영</span></div>
-      <div class="editable">
-        <h3>3. 수강 신청 전 확인</h3>
-      </div>
-      <div class="checklist-group" data-group="ch4-pre">
-        <div class="progress-label" id="prog-ch4-pre">0 / 4 완료</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch4-pre" style="width:0%"></div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">본교 미개설 과목 여부 확인</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">기이수 과목 여부 확인</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">수강 가능 학년 여부 확인</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch4-pre')"><div class="check-box"></div><div class="check-label">운영 일정 참여 가능 여부 확인</div></div>
-      </div>
-      <div class="editable">
-        <h3>4. 수강생 확정 후 업무</h3>
-        <p>교육지원청에서 안내한 수강생 확정 명단을 확인하고 학생 및 담임교사에게 운영 일정, 출결 기준, 평가 방법, 유의사항을 안내한다.</p>
-        <h3>5. 참여학교 체크리스트</h3>
-      </div>
-      <details open>
-        <summary>운영 전 체크리스트</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch4-s-pre">
-            <div class="progress-label" id="prog-ch4-s-pre">0 / 5 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch4-s-pre" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-pre')"><div class="check-box"></div><div class="check-label">공동교육과정 안내</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-pre')"><div class="check-box"></div><div class="check-label">수강 신청 안내</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-pre')"><div class="check-box"></div><div class="check-label">신청서 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-pre')"><div class="check-box"></div><div class="check-label">학부모 동의서 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-pre')"><div class="check-box"></div><div class="check-label">수강생 명단 확인</div></div>
-          </div>
-        </div>
-      </details>
-      <details>
-        <summary>운영 중 · 후 체크리스트</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch4-s-post">
-            <div class="progress-label" id="prog-ch4-s-post">0 / 7 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch4-s-post" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">학생 참여 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">출결 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">학생 상담</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">운영교 협조</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">학점 이수 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">학생부 반영 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch4-s-post')"><div class="check-box"></div><div class="check-label">만족도 조사 참여</div></div>
-          </div>
-        </div>
-      </details>
+
+      <div class="tip">세특 작성 시 학생별 개별화, 객관적 사실 중심, 평가 결과와의 연계, 문장형 서술을 원칙으로 합니다.</div>
     </section>
 
-    <!-- CH5 수업교사 업무 -->
-    <section id="ch5" class="section">
-      <h2 class="chapter">Ⅴ. 수업교사 업무</h2>
-      <div class="editable">
-        <h3>1. 수업교사의 역할</h3>
-        <p>수업교사는 공동교육과정 강좌 운영의 책임자로서 교수·학습 활동, 평가, 출결관리, 학교생활기록부 기재를 담당한다.</p>
-        <h3>2. 수업교사 업무 흐름</h3>
-      </div>
-      <div class="flow"><span>선정</span><b>→</b><span>강사카드</span><b>→</b><span>수업운영계획</span><b>→</b><span>평가계획</span><b>→</b><span>물품 신청</span><b>→</b><span>수업 운영</span><b>→</b><span>성적·세특</span><b>→</b><span>결과 제출</span></div>
-      <div class="editable">
-        <h3>3. 수업 시작 전 제출 서류</h3>
-      </div>
-      <div class="checklist-group" data-group="ch5-docs">
-        <div class="progress-label" id="prog-ch5-docs">0 / 4 완료</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch5-docs" style="width:0%"></div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch5-docs')"><div class="check-box"></div><div class="check-label">강사카드</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch5-docs')"><div class="check-box"></div><div class="check-label">수업운영계획서</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch5-docs')"><div class="check-box"></div><div class="check-label">평가계획</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch5-docs')"><div class="check-box"></div><div class="check-label">물품 신청서</div></div>
-      </div>
-      <div class="editable">
-        <h3>4. 수강생 사전 안내</h3>
-        <p>수업교사는 수강생에게 운영 일정, 수업 장소, LMS 접속 방법, 과제 제출 방법, 평가 방법, 출결 기준을 사전에 안내한다.</p>
-        <h3>5. 수업 운영</h3>
-        <p>학생 참여 중심 수업을 원칙으로 하며, 토의·토론, 프로젝트, 실험·실습, 발표, 포트폴리오 등 과목 특성에 맞는 다양한 방법을 활용한다.</p>
-        <h3>6. 수업교사 체크리스트</h3>
-      </div>
-      <details open>
-        <summary>운영 전</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch5-pre">
-            <div class="progress-label" id="prog-ch5-pre">0 / 5 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch5-pre" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">강사카드 제출</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">수업운영계획서 제출</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">평가계획 작성</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">물품 신청</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-pre')"><div class="check-box"></div><div class="check-label">수강생 안내</div></div>
-          </div>
-        </div>
-      </details>
-      <details>
-        <summary>운영 중 · 후</summary>
-        <div class="detail-body">
-          <div class="checklist-group" data-group="ch5-mid">
-            <div class="progress-label" id="prog-ch5-mid">0 / 8 완료</div>
-            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch5-mid" style="width:0%"></div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">출결 관리</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">수업 운영</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">과제 확인</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">학생 상담</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">안전 관리</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">평가 실시</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">성적 처리</div></div>
-            <div class="check-item" onclick="toggleCheck(this,'ch5-mid')"><div class="check-box"></div><div class="check-label">세특 작성 및 결과보고 제출</div></div>
-          </div>
-        </div>
-      </details>
-    </section>
+    <!-- VI. 출결 -->
+    <section id="attend" class="section">
+      <h2 class="ch-title">Ⅵ. 출결 및 학점 이수 관리</h2>
 
-    <!-- CH6 출결 -->
-    <section id="ch6" class="section">
-      <h2 class="chapter">Ⅵ. 출결 및 학점 이수 관리</h2>
-      <div class="editable">
-        <h3>1. 출결 관리 원칙</h3>
-      </div>
-      <div class="note">계절학기 출결은 별도 출석부로 관리하며, 정규 학기 출결에 반영하지 않는다. 다만 과목 이수 여부 판단 자료로 활용한다.</div>
-      <div class="editable"><h3>2. 출결 처리 기준</h3></div>
+      <div class="note">계절학기 출결은 별도 출석부로 관리하며, 정규 학기 출결에 반영하지 않습니다. 과목 이수 여부 판단 자료로 활용합니다.</div>
+
+      <h3 class="sh">출결 처리 기준</h3>
       <table>
         <tr><th>구분</th><th>관리 방법</th><th>비고</th></tr>
-        <tr><td>온라인 수업</td><td>실시간 접속, 참여 여부, 과제 제출 확인</td><td>필요시 화면 캡처 등 증빙 관리</td></tr>
-        <tr><td>오프라인 수업</td><td>수기 출석부 작성</td><td>강사 및 보조강사 확인</td></tr>
-        <tr><td>지각·조퇴</td><td>출석부에 시간 및 사유 기록</td><td>이수 기준 판단 자료 활용</td></tr>
-        <tr><td>결석</td><td>사유 확인 및 기록</td><td>출석 인정 여부는 관련 기준에 따라 판단</td></tr>
+        <tr><td>온라인 수업</td><td>실시간 접속 기록, 참여 여부, 과제 제출 확인</td><td>화면 캡처 등 증빙 관리</td></tr>
+        <tr><td>오프라인 수업</td><td>수기 출석부 작성</td><td>강사 확인</td></tr>
+        <tr><td>지각·조퇴</td><td>출석부에 시간 및 사유 기록</td><td>이수 기준 판단 자료</td></tr>
+        <tr><td>결석</td><td>사유 확인 및 기록</td><td>출석 인정 여부 기준 적용</td></tr>
       </table>
-      <div class="editable"><h3>3. 학점 이수 기준</h3></div>
+
+      <h3 class="sh">학점 이수 기준</h3>
       <table>
         <tr><th>구분</th><th>이수 기준</th></tr>
         <tr><td>일반 과목</td><td>과목출석률 3분의 2 이상 및 학업성취율 40% 이상</td></tr>
         <tr><td>교양 과목</td><td>과목출석률 기준 적용</td></tr>
         <tr><td>미도달 학생</td><td>최소 성취수준 보장지도 또는 추가학습 기회 제공</td></tr>
       </table>
-      <div class="editable">
-        <h3>4. 미이수 위험 학생 관리</h3>
-        <p>수업교사와 운영교는 출석률 부족, 과제 미제출, 평가 미참여 등 미이수 위험 학생을 조기에 파악하고 참여학교와 협의하여 학생 상담, 보호자 연락, 추가 학습 안내를 실시한다.</p>
-      </div>
+
+      <h3 class="sh">수강 포기 학생 처리</h3>
+      <p>수강 확정 이후 포기는 원칙적으로 불가합니다. 불가피한 경우 거점교 담당자, 참여교 담당자, 교육지원청이 협의하여 처리합니다.</p>
     </section>
 
-    <!-- CH7 평가 -->
-    <section id="ch7" class="section">
-      <h2 class="chapter">Ⅶ. 평가 및 학교생활기록부</h2>
-      <div class="editable">
-        <h3>1. 평가 운영 원칙</h3>
-        <p>평가는 성취기준에 근거하여 학생의 성장과 발달을 지원하는 방향으로 운영한다. 공동교육과정 운영 계획서와 평가계획의 평가 항목 및 평가 비율은 일치해야 한다.</p>
-        <h3>2. 평가 방법</h3>
-      </div>
+    <!-- VII. 평가 -->
+    <section id="eval" class="section">
+      <h2 class="ch-title">Ⅶ. 평가 및 학교생활기록부</h2>
+
+      <h3 class="sh">평가 방법</h3>
       <table>
         <tr><th>평가 유형</th><th>예시</th></tr>
         <tr><td>수행평가</td><td>프로젝트, 발표, 토론, 실험·실습, 포트폴리오</td></tr>
         <tr><td>과정중심평가</td><td>학습 과정, 참여도, 협력 활동, 성찰 기록</td></tr>
-        <tr><td>지필평가</td><td>필요 시 오프라인 실시 원칙, 거점학교 평가관리 절차 준수</td></tr>
       </table>
-      <div class="editable">
-        <h3>3. 성적 처리</h3>
-        <p>운영교는 평가 결과를 입력하고 성적을 산출하며, 참여학교로 자료를 전송한다. 참여학교는 전송 자료를 확인한 후 학교생활기록부에 반영한다.</p>
-        <h3>4. 세부능력 및 특기사항</h3>
-        <p>수업교사는 학생별 학습 과정, 탐구 활동, 협력 활동, 과제 수행, 발표 활동, 진로 탐색 과정 등을 구체적으로 관찰하여 세부능력 및 특기사항을 작성한다.</p>
+
+      <div class="note">교양 교과는 이수/미이수로 평가합니다. 지필평가는 실시하지 않습니다.</div>
+
+      <h3 class="sh">성적 처리 및 전송 절차</h3>
+      <div class="flow">
+        <span>평가 실시</span><b>→</b>
+        <span>성적 산출</span><b>→</b>
+        <span>세특 입력</span><b>→</b>
+        <span>나이스 전송</span><b>→</b>
+        <span>참여교 수신 확인</span><b>→</b>
+        <span>학생부 반영</span>
       </div>
-      <div class="tip">세특 작성 시 학생별 개별화, 객관적 사실 중심, 평가 결과와의 연계, 문장형 서술을 원칙으로 한다.</div>
+
+      <div class="warn"><strong>⚠️</strong> 성적 및 세특 전송 후 수정사항이 발생한 경우 거점교와 참여교가 반드시 상호 확인 후 재반영합니다.</div>
     </section>
 
-    <!-- CH8 나이스 -->
-    <section id="ch8" class="section">
-      <h2 class="chapter">Ⅷ. 나이스 업무 처리</h2>
-      <div class="editable">
-        <h3>1. 기본 방향</h3>
-        <p>계절학기 공동교육과정은 운영교를 중심으로 나이스 과목 개설, 수강생 등록, 성적 처리, 세특 입력 및 참여학교 전송 절차를 진행한다.</p>
-        <h3>2. 운영교 주요 절차</h3>
-        <ol style="padding-left:20px;line-height:2">
-          <li>계절학기 등록 및 설정</li>
-          <li>계절수업학적생성</li>
-          <li>공동교육과정 과목 편제 등록</li>
-          <li>과목 개설 및 수업교사 등록</li>
-          <li>거점학교 및 참여학교 수강생 등록</li>
-          <li>수행평가 또는 교양교과 이수 처리</li>
-          <li>학기말 성적 산출</li>
-          <li>과목별 세부능력 및 특기사항 입력</li>
-          <li>참여학교 자료 전송</li>
-        </ol>
-        <h3>3. 참여학교 주요 절차</h3>
-        <ol style="padding-left:20px;line-height:2">
-          <li>공동교육과정 수강생 확인 요청 접수</li>
-          <li>학생 정보 확인 및 요청 확인</li>
-          <li>성적 및 세특 자료 수신 확인</li>
-          <li>학교생활기록부 교과학습발달상황 자료 반영</li>
-          <li>반영 결과 확인</li>
-        </ol>
-        <h3>4. 유의사항</h3>
+    <!-- VIII. 나이스 -->
+    <section id="neis" class="section">
+      <h2 class="ch-title">Ⅷ. 나이스 업무 처리</h2>
+
+      <h3 class="sh">거점교 나이스 처리 순서</h3>
+      <div class="workflow">
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><div class="wf-title">계절학기 등록 및 설정</div><div class="wf-desc">계절수업학적생성</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><div class="wf-title">공동교육과정 과목 편제 등록</div><div class="wf-desc">과목 개설 및 수업교사 등록</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">3</div><div class="wf-content"><div class="wf-title">수강생 등록</div><div class="wf-desc">거점교 및 참여교 수강생 등록</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">4</div><div class="wf-content"><div class="wf-title">교양교과 이수 처리</div><div class="wf-desc">수행평가 또는 교양교과 이수 처리</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">5</div><div class="wf-content"><div class="wf-title">성적 산출 및 세특 입력</div><div class="wf-desc">학기말 성적 산출 · 과목별 세특 입력</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">6</div><div class="wf-content"><div class="wf-title">참여교 자료 전송</div><div class="wf-desc">성적 및 세특 전송</div></div></div>
       </div>
-      <div class="note">성적 및 세부능력 및 특기사항 전송 후 수정사항이 발생한 경우, 운영교와 참여학교가 수정 및 재반영 여부를 반드시 상호 확인한다.</div>
+
+      <h3 class="sh">참여교 나이스 처리 순서</h3>
+      <div class="workflow">
+        <div class="wf-step"><div class="wf-num">1</div><div class="wf-content"><div class="wf-title">성적산출기준명 등록</div><div class="wf-desc">거점교와 동일하게 등록</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">2</div><div class="wf-content"><div class="wf-title">수강생 확인 요청 접수</div><div class="wf-desc">학생 정보 확인</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">3</div><div class="wf-content"><div class="wf-title">성적 및 세특 수신</div><div class="wf-desc">거점교 전송 자료 수신 확인</div></div></div>
+        <div class="wf-arrow">↓</div>
+        <div class="wf-step"><div class="wf-num">4</div><div class="wf-content"><div class="wf-title">학생부 반영 및 최종 확인</div><div class="wf-desc">교과학습발달상황 반영 · 결과 확인</div></div></div>
+      </div>
     </section>
 
-    <!-- CH9 예산 -->
-    <section id="ch9" class="section">
-      <h2 class="chapter">Ⅸ. 예산 집행 및 정산</h2>
-      <div class="editable">
-        <h3>1. 예산 사용 범위</h3>
-      </div>
-      <div class="checklist-group" data-group="ch9-budget">
-        <div class="progress-label" id="prog-ch9-budget">0 / 5 완료</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch9-budget" style="width:0%"></div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch9-budget')"><div class="check-box"></div><div class="check-label">강사 수당</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch9-budget')"><div class="check-box"></div><div class="check-label">협력교사 수당</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch9-budget')"><div class="check-box"></div><div class="check-label">교재 및 재료비</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch9-budget')"><div class="check-box"></div><div class="check-label">학생 안전관리비</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch9-budget')"><div class="check-box"></div><div class="check-label">운영 물품 구입비</div></div>
-      </div>
-      <div class="editable">
-        <h3>2. 물품 신청</h3>
-        <p>수업교사는 수업에 필요한 교재, 실험·실습 재료, 활동 자료, 기자재 등을 운영교에 신청하고, 운영교는 교육지원청 안내에 따라 제출한다.</p>
-        <h3>3. 강사 및 협력교사 수당</h3>
-      </div>
+    <!-- IX. 예산 -->
+    <section id="budget" class="section">
+      <h2 class="ch-title">Ⅸ. 예산 집행 및 정산</h2>
+
+      <h3 class="sh">예산 사용 범위</h3>
       <table>
-        <tr><th>구분</th><th>지급 기준</th><th>증빙</th></tr>
-        <tr><td>수업교사</td><td>수업 시수 기준</td><td>출근부, 수업 운영 자료</td></tr>
-        <tr><td>협력교사</td><td>지원 시수 또는 업무 실적 기준</td><td>보조강사 증빙서류, 출근부</td></tr>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>강사 수당</td><td>수업 시수 기준 지급 / 증빙: 출근부, 수업 운영 자료</td></tr>
+        <tr><td>교재 및 재료비</td><td>수업 교재, 실험·실습 재료, 활동 자료</td></tr>
+        <tr><td>학생 안전관리비</td><td>안전 관련 소모품</td></tr>
+        <tr><td>운영 물품 구입비</td><td>수업 운영에 필요한 기자재·물품</td></tr>
       </table>
-      <div class="editable">
-        <h3>4. 정산</h3>
-        <p>운영 종료 후 운영 결과보고서, 지출 증빙자료, 정산서를 제출한다.</p>
-      </div>
+
+      <div class="note">물품 신청은 <a href="학교담당자.html" style="color:var(--blue);font-weight:700">📋 학교담당자 페이지</a>에서 작성 후 구글 시트로 제출하세요.</div>
     </section>
 
-    <!-- CH10 안전 -->
-    <section id="ch10" class="section">
-      <h2 class="chapter">Ⅹ. 안전관리</h2>
-      <div class="editable">
-        <h3>1. 기본 원칙</h3>
-        <p>운영교와 참여학교는 학생 안전을 최우선으로 하여 수업 전 안전교육, 비상연락망 구축, 응급상황 대응 체계를 마련한다.</p>
-        <h3>2. 오프라인 수업 안전관리</h3>
-      </div>
-      <div class="checklist-group" data-group="ch10-offline">
-        <div class="progress-label" id="prog-ch10-offline">0 / 4 완료</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch10-offline" style="width:0%"></div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-offline')"><div class="check-box"></div><div class="check-label">이동 경로 사전 안내</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-offline')"><div class="check-box"></div><div class="check-label">교통안전 교육</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-offline')"><div class="check-box"></div><div class="check-label">실험·실습 안전교육</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-offline')"><div class="check-box"></div><div class="check-label">응급상황 대응 절차 안내</div></div>
-      </div>
-      <div class="editable"><h3>3. 온라인 수업 안전관리</h3></div>
-      <div class="checklist-group" data-group="ch10-online">
-        <div class="progress-label" id="prog-ch10-online">0 / 4 완료</div>
-        <div class="progress-bar-wrap"><div class="progress-bar" id="bar-ch10-online" style="width:0%"></div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-online')"><div class="check-box"></div><div class="check-label">개인정보 보호 안내</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-online')"><div class="check-box"></div><div class="check-label">수업 영상 활용 동의 확인</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-online')"><div class="check-box"></div><div class="check-label">온라인 예절 및 저작권 교육</div></div>
-        <div class="check-item" onclick="toggleCheck(this,'ch10-online')"><div class="check-box"></div><div class="check-label">접속 장애 시 대체 연락 체계 마련</div></div>
-      </div>
+    <!-- X. 안전관리 -->
+    <section id="safety" class="section">
+      <h2 class="ch-title">Ⅹ. 안전관리</h2>
+
+      <h3 class="sh">온라인 수업 안전관리</h3>
+      <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>개인정보 보호</td><td>수업 영상 녹화·배포 금지 안내</td></tr>
+        <tr><td>수업 영상 활용 동의</td><td>학생·보호자 동의서 사전 확인</td></tr>
+        <tr><td>온라인 예절</td><td>저작권 교육, 사이버 예절 안내</td></tr>
+        <tr><td>접속 장애 대응</td><td>대체 연락 체계 마련</td></tr>
+      </table>
+
+      <h3 class="sh">오프라인 수업 안전관리</h3>
+      <table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>이동 안전</td><td>이동 경로 사전 안내, 교통안전 교육</td></tr>
+        <tr><td>실험·실습 안전</td><td>사전 안전교육 실시</td></tr>
+        <tr><td>응급상황 대응</td><td>비상연락망 구축, 대응 절차 안내</td></tr>
+      </table>
     </section>
 
     <!-- FAQ -->
-    <section id="faq-section" class="section">
-      <h2 class="chapter">Ⅺ. 자주 묻는 질문 (FAQ)</h2>
+    <section id="faq" class="section">
+      <h2 class="ch-title">❓ 자주 묻는 질문 (FAQ)</h2>
       <div class="faq-search-wrap">
-        <input type="text" id="faq-search" placeholder="🔍 궁금한 내용을 검색하세요..." oninput="searchFAQ(this.value)">
+        <input type="text" id="faq-input" placeholder="🔍 궁금한 내용을 검색하세요..." oninput="searchFAQ(this.value)">
         <button class="tb-btn" onclick="searchFAQ('')">전체</button>
       </div>
       <div id="faq-list">
-        <details class="faq-item">
-          <summary>Q1. 본교에 개설된 과목도 신청 가능한가요?</summary>
-          <div class="detail-body">원칙적으로 신청할 수 없습니다. 공동교육과정은 학생의 3개년 교육과정 기준 재적교에 개설되지 않은 과목을 대상으로 운영합니다.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q2. 수강 확정 후 중도 포기가 가능한가요?</summary>
-          <div class="detail-body">수강 확정 이후에는 원칙적으로 포기할 수 없습니다. 수강 신청 전 과목, 일정, 평가 방법을 충분히 확인해야 합니다.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q3. 계절학기 출결은 학교 출결에 반영되나요?</summary>
-          <div class="detail-body">계절학기 출결은 별도 출석부로 관리하며 정규 학기 출결에 반영하지 않습니다. 다만 과목 이수 판단 자료로 활용합니다.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q4. 미이수 시 어떻게 처리하나요?</summary>
-          <div class="detail-body">과목 이수 기준에 미도달한 경우 최소 성취수준 보장지도 또는 추가학습을 통해 학점 취득 기회를 제공할 수 있으며, 최종 미충족 시 미이수 처리합니다.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q5. 온라인 공동교육과정의 출석 증빙은 어떻게 하나요?</summary>
-          <div class="detail-body">실시간 접속 기록, 참여자 명단, 화면 캡처, 과제 제출 기록 등을 활용할 수 있습니다.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q6. 수업교사가 본교 소속이 아닌 경우 절차가 다른가요?</summary>
-          <div class="detail-body">외부 수업교사의 경우 강사카드 제출, 수당 지급 절차, 출근부 관리 등 추가 서류가 필요할 수 있습니다. 운영교 담당자에게 사전 확인하세요.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q7. 평가 결과는 학교생활기록부에 어떻게 반영되나요?</summary>
-          <div class="detail-body">운영교에서 성적 및 세특 자료를 나이스를 통해 참여학교로 전송하면, 참여학교에서 학교생활기록부 교과학습발달상황에 반영합니다.</div>
-        </details>
-        <details class="faq-item">
-          <summary>Q8. 학생이 수업 도중 결석하면 이수가 불가능한가요?</summary>
-          <div class="detail-body">결석이 있더라도 과목출석률이 3분의 2 이상이고 학업성취율이 40% 이상이면 이수 가능합니다. 단, 개별 상황에 따라 담당교사와 상담이 필요합니다.</div>
-        </details>
+
+        <details class="faq"><summary><span class="faq-cat ops">운영</span>학교운영위원회 심의는 언제까지 해야 하나요?</summary><div class="faq-body">수업 시작 전까지 학교운영위원회 심의를 완료해야 합니다. 거점교는 공동교육과정 운영계획을 수립한 후 학교운영위원회 심의를 거쳐 운영계획서를 제출합니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat attend">출결</span>출결은 어떻게 관리하나요?</summary><div class="faq-body">온라인 수업은 실시간 접속 기록, 참여 여부, 과제 제출 확인으로 관리합니다. 별도 출결부를 작성하며 정규 학기 출결에는 반영되지 않습니다. 과목출석률 3분의 2 이상이 이수 기준입니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat attend">출결</span>수강 포기 학생은 어떻게 처리하나요?</summary><div class="faq-body">수강 확정 이후 포기는 원칙적으로 불가합니다. 불가피한 경우 거점교 담당자, 참여교 담당자, 교육지원청이 협의하여 처리합니다. 수강 신청 전 일정과 평가 방법을 충분히 안내하는 것이 중요합니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat grade">성적</span>미이수 학생은 어떻게 처리하나요?</summary><div class="faq-body">과목 이수 기준에 미도달한 경우 최소 성취수준 보장지도 또는 추가학습 기회를 제공합니다. 최종 미충족 시 미이수 처리하며, 수업교사와 거점교 담당자가 참여교에 통보합니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat grade">성적</span>성적 및 세특은 언제 전송하나요?</summary><div class="faq-body">여름방학 종료 전까지 성적 처리 및 세특 입력을 완료하고 참여교로 나이스를 통해 전송합니다. 방학 종료 전 성적 처리 완료가 원칙입니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat ops">운영</span>참여교는 어떤 업무를 해야 하나요?</summary><div class="faq-body">① 수강학생 확인 및 수강 승인 → ② 성적산출기준명 등록 → ③ 학생 수업 참여 관리 → ④ 거점교로부터 성적·세특 자료 수신 → ⑤ 학교생활기록부 반영 순서로 진행합니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat grade">성적</span>학생부 반영은 누가 하나요?</summary><div class="faq-body">거점교에서 나이스를 통해 성적과 세특을 전송하면, 참여교 담당자가 학교생활기록부 교과학습발달상황에 반영합니다. 반영 후 내용을 반드시 확인하세요.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat neis">나이스</span>성적산출기준명은 어떻게 등록하나요?</summary><div class="faq-body">참여교는 거점교와 동일한 성적산출기준명을 나이스에 등록해야 합니다. 등록 전 거점교 담당자에게 성적산출기준명을 확인하고 동일하게 입력하세요.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat ops">운영</span>본교에 개설된 과목도 신청 가능한가요?</summary><div class="faq-body">원칙적으로 신청할 수 없습니다. 공동교육과정은 학생의 3개년 교육과정 기준 재적교에 개설되지 않은 과목을 대상으로 운영합니다.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat attend">출결</span>온라인 수업 출석 증빙은 어떻게 하나요?</summary><div class="faq-body">실시간 접속 기록, 참여자 명단, 화면 캡처, 과제 제출 기록 등을 활용합니다. 출석 증빙 자료는 별도 보관하세요.</div></details>
+
+        <details class="faq"><summary><span class="faq-cat etc">기타</span>수업교사가 외부 교사인 경우 추가 서류가 있나요?</summary><div class="faq-body">외부 수업교사의 경우 강사카드 제출, 수당 지급 절차, 출근부 관리 등 추가 서류가 필요합니다. 거점교 담당자에게 사전 확인하세요.</div></details>
+
       </div>
-      <div id="faq-empty" style="display:none;color:var(--muted);padding:24px;text-align:center;font-size:14px">
-        검색 결과가 없습니다. 다른 키워드로 검색해 보세요.
-      </div>
+      <div id="faq-empty">검색 결과가 없습니다. 다른 키워드로 검색해 보세요.</div>
     </section>
 
-    <!-- 서식 다운로드 -->
-    <section id="forms-section" class="section">
-      <h2 class="chapter">Ⅻ. 서식 다운로드</h2>
-      <p style="color:var(--muted);font-size:14px;margin-bottom:16px">필요한 서식을 클릭하여 작성하거나 다운로드하세요.</p>
-      <div class="forms-grid">
-        <div class="form-card" onclick="openForm('form1')">
-          <div class="fc-icon">📋</div>
-          <div class="fc-name">서식 1. 운영교 신청서</div>
-          <div class="fc-desc">과목 개설 신청 및 운영교 등록용</div>
-          <div class="fc-btn">작성하기</div>
+    <!-- 업무자료실 -->
+    <section id="resources" class="section">
+      <h2 class="ch-title">📁 업무자료실</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:18px">아래 버튼을 클릭하면 해당 자료로 바로 이동합니다. 구글 드라이브에서 최신 자료를 확인하세요.</p>
+
+      <div class="resource-grid">
+        <div class="resource-card">
+          <div class="rc-icon">📋</div>
+          <div class="rc-name">운영계획서</div>
+          <div class="rc-desc">공동교육과정 운영계획서 양식</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
         </div>
-        <div class="form-card" onclick="openForm('form2')">
-          <div class="fc-icon">📝</div>
-          <div class="fc-name">서식 2. 수업운영계획서</div>
-          <div class="fc-desc">차시별 수업 계획 및 평가 방법</div>
-          <div class="fc-btn">작성하기</div>
+        <div class="resource-card">
+          <div class="rc-icon">📅</div>
+          <div class="rc-name">출결부</div>
+          <div class="rc-desc">수강생 출결 기록 양식</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
         </div>
-        <div class="form-card" onclick="openForm('form3')">
-          <div class="fc-icon">✅</div>
-          <div class="fc-name">서식 3. 출석부</div>
-          <div class="fc-desc">수강생 출결 기록 양식</div>
-          <div class="fc-btn">작성하기</div>
+        <div class="resource-card">
+          <div class="rc-icon">🧾</div>
+          <div class="rc-name">강사출근부</div>
+          <div class="rc-desc">강사 출근 기록 양식</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
         </div>
-        <div class="form-card" onclick="openForm('form4')">
-          <div class="fc-icon">🛒</div>
-          <div class="fc-name">서식 4. 물품 구입 신청서</div>
-          <div class="fc-desc">교재·재료비 신청용</div>
-          <div class="fc-btn">작성하기</div>
+        <div class="resource-card">
+          <div class="rc-icon">😊</div>
+          <div class="rc-name">만족도 조사 (학생용)</div>
+          <div class="rc-desc">수강 학생 대상 만족도 조사 양식</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
         </div>
-        <div class="form-card" onclick="openForm('form5')">
-          <div class="fc-icon">📊</div>
-          <div class="fc-name">서식 5. 운영 결과보고서</div>
-          <div class="fc-desc">운영 종료 후 결과 및 정산 보고</div>
-          <div class="fc-btn">작성하기</div>
+        <div class="resource-card">
+          <div class="rc-icon">👩‍🏫</div>
+          <div class="rc-name">만족도 조사 (교사용)</div>
+          <div class="rc-desc">수업교사 대상 만족도 조사 양식</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-icon">📊</div>
+          <div class="rc-name">결과보고서</div>
+          <div class="rc-desc">운영 결과보고서 양식</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
+        </div>
+        <div class="resource-card">
+          <div class="rc-icon">📁</div>
+          <div class="rc-name">업무자료실 전체</div>
+          <div class="rc-desc">구글 드라이브 폴더 전체 보기</div>
+          <a class="rc-btn disabled" href="#" onclick="return false">링크 준비 중</a>
         </div>
       </div>
+
+      <div class="note">서식 링크는 구글 드라이브 주소를 연결하면 즉시 활성화됩니다. 담당자에게 링크 등록을 요청하세요.</div>
     </section>
-  </div>
-</div>
-</div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /app -->
 
 <script>
 function goTo(id) {
   const el = document.getElementById(id);
   if (el) {
-    el.scrollIntoView({behavior:'smooth',block:'start'});
+    el.scrollIntoView({behavior:'smooth', block:'start'});
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     const btn = event.target.closest('.nav-item');
     if (btn) btn.classList.add('active');
   }
   if (window.innerWidth < 768) document.getElementById('sidebar').classList.remove('open');
 }
+
 function filterNav(q) {
-  document.querySelectorAll('.nav-item').forEach(item => {
+  document.querySelectorAll('#nav .nav-item').forEach(item => {
     item.style.display = item.textContent.includes(q) ? '' : 'none';
   });
 }
-function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
 function searchFAQ(q) {
-  document.getElementById('faq-search').value = q;
-  const items = document.querySelectorAll('.faq-item');
+  document.getElementById('faq-input').value = q;
+  const items = document.querySelectorAll('.faq');
   let shown = 0;
   items.forEach(item => {
     const match = item.textContent.toLowerCase().includes(q.toLowerCase());
@@ -795,22 +747,25 @@ function searchFAQ(q) {
   });
   document.getElementById('faq-empty').style.display = shown === 0 ? 'block' : 'none';
 }
-function checkMobile() {
-  document.getElementById('menu-btn').style.display = window.innerWidth < 768 ? 'flex' : 'none';
-}
+
 function setupScrollSpy() {
-  const ids = ['cover','preface','timeline-section','ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','faq-section','forms-section'];
+  const ids = ['cover','quick','courses','timeline','overview','procedure','hub','part','teacher','attend','eval','neis','budget','safety','faq','resources'];
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-        const m = document.querySelector(`.nav-item[onclick*="${e.target.id}"]`);
+        const m = document.querySelector(`#nav .nav-item[onclick*="${e.target.id}"]`);
         if (m) m.classList.add('active');
       }
     });
-  }, {threshold:0.2, rootMargin:'-60px 0px -40% 0px'});
+  }, {threshold:0.2, rootMargin:'-58px 0px -40% 0px'});
   ids.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
 }
+
+function checkMobile() {
+  document.getElementById('menu-btn').style.display = window.innerWidth < 768 ? 'flex' : 'none';
+}
+
 window.addEventListener('load', () => { checkMobile(); setupScrollSpy(); });
 window.addEventListener('resize', checkMobile);
 </script>
